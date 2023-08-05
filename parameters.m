@@ -60,10 +60,6 @@ ParameterDefinitions = {
       LaTeX -> "\\lambda_3",
       LesHouches -> {BL,3}}},
 
-{mH2, {OutputName -> mH2,
-      LaTeX -> "\\m^2_H",
-      LesHouches -> {BL,20}}},
-						       
 {MuP, {OutputName -> MUP,
       LaTeX -> "\\mu'",
       LesHouches -> {BL,10}}},
@@ -99,10 +95,14 @@ ParameterDefinitions = {
 {Ve,        {Description ->"Left-Lepton-Mixing-Matrix"}},
 {Ue,        {Description ->"Right-Lepton-Mixing-Matrix"}},
 
+
+
+						       
 (* Scalar sector *)
 {mH2,         { Description -> "SM Mu Parameter",
                 LaTeX -> "\\mu^2",
 	        OutputName -> mH2}},
+
 
 {MS2,       {Description -> "Softbreaking Up-Higgs Mass",
              LaTeX -> "M_S^2",
