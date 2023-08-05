@@ -32,14 +32,65 @@ ParameterDefinitions = {
                DependenceNum -> Sqrt[4*Mass[VWp]^2/(g2^2)],
                DependenceSPheno -> None  }},
 
+{vX,      {  LaTeX -> "v_x",
+             Dependence ->  None, 
+             OutputName -> vX,
+             Real -> True,
+             LesHouches -> {BL,43} }},
+
 {ThetaW,    { Description -> "Weinberg-Angle",
-              DependenceNum -> ArcSin[Sqrt[1 - Mass[VWp]^2/Mass[VZ]^2]]}},
+              DependenceNum -> ArcSin[Sqrt[1 - Mass[VWp]^2/Mass[VZ]^2]]  }},
+
+{ThetaWp,  { Description -> "Theta'", DependenceNum -> None  }},
 
 {ZZ, {Description -> "Photon-Z Mixing Matrix"}},
 {ZW, {Description -> "W Mixing Matrix",
        Dependence ->   1/Sqrt[2] {{1, 1},
                   {\[ImaginaryI],-\[ImaginaryI]}} }},
 
+{lambda1,  {OutputName -> lam1,
+            LaTeX -> "\\lambda_1",
+            LesHouches -> {BL,1}}},
+
+{L2, {OutputName -> lam2,
+      LaTeX -> "\\lambda_2",
+      LesHouches -> {BL,2}}},
+
+{L3, {OutputName -> lam3,
+      LaTeX -> "\\lambda_3",
+      LesHouches -> {BL,3}}},
+
+{mH2, {OutputName -> mH2,
+      LaTeX -> "\\m^2_H",
+      LesHouches -> {BL,20}}},
+						       
+{MuP, {OutputName -> MUP,
+      LaTeX -> "\\mu'",
+      LesHouches -> {BL,10}}},
+
+{Ynp, {OutputName -> Ynp,
+      LaTeX -> "Y_{np}",
+      LesHouches -> YNP }},
+
+{Yrs, {OutputName -> Yrs,
+      LaTeX -> "Y_{rs}",
+      LesHouches -> YRS }},
+						       
+{Ytv, {OutputName -> Ytv,
+      LaTeX -> "Y_{tv}",
+      LesHouches -> YTV }},
+
+{Yxy, {OutputName -> Yxy,
+      LaTeX -> "Y_{xy}",
+      LesHouches -> YXY }},
+
+{Yz, {OutputName -> Yz,
+      LaTeX -> "Y_{z}",
+      LesHouches -> YZ }},
+
+{Mnp, {OutputName -> Mnp,
+      LaTeX -> "M_{np}",
+      LesHouches -> MNP }},
 
 {Vu,        {Description ->"Left-Up-Mixing-Matrix"}},
 {Vd,        {Description ->"Left-Down-Mixing-Matrix"}},
