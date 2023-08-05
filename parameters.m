@@ -17,20 +17,18 @@ ParameterDefinitions = {
 {aEWinv,    { Description -> "inverse weak coupling constant at mZ"}},
 
 {Yu,        { Description -> "Up-Yukawa-Coupling",
-			 DependenceNum ->  Sqrt[2]/v* {{Mass[Fu,1],0,0},
+			 DependenceNum ->  Sqrt[2]/vH* {{Mass[Fu,1],0,0},
              									{0, Mass[Fu,2],0},
              									{0, 0, Mass[Fu,3]}}}}, 
-             									
 {Yd,        { Description -> "Down-Yukawa-Coupling",
-			  DependenceNum ->  Sqrt[2]/v* {{Mass[Fd,1],0,0},
+			  DependenceNum ->  Sqrt[2]/vH* {{Mass[Fd,1],0,0},
              									{0, Mass[Fd,2],0},
              									{0, 0, Mass[Fd,3]}}}},
-             									
 {Ye,        { Description -> "Lepton-Yukawa-Coupling",
-			  DependenceNum ->  Sqrt[2]/v* {{Mass[Fe,1],0,0},
+			  DependenceNum ->  Sqrt[2]/vH* {{Mass[Fe,1],0,0},
              									{0, Mass[Fe,2],0},
              									{0, 0, Mass[Fe,3]}}}},                                                                                                             
-{v,          { Description -> "EW-VEV",
+{vH,          { Description -> "EW-VEV",
                DependenceNum -> Sqrt[4*Mass[VWp]^2/(g2^2)],
                DependenceSPheno -> None  }},
 
@@ -60,7 +58,7 @@ ParameterDefinitions = {
 	     OutputName-> MS2}}, 
 
 {Lambda1, { Description -> "SM Higgs Selfcouplings",
-               DependenceNum -> Mass[Rh]^2/(v^2)}},
+               DependenceNum -> Mass[Rh]^2/(vH^2)}},
 
 {LamSH,     {OutputName ->"LSH",
              LesHouches -> {HDM,2}}},

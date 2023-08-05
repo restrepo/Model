@@ -17,7 +17,7 @@ DEFINITION[MatchingConditions]= {
  {g1, g1SM},
  {g2, g2SM},
  {g3, g3SM},
- {v, vSM}
+ {vH, vSM}
  };
 
 BoundaryLowScaleInput={
