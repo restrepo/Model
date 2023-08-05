@@ -3,6 +3,13 @@ ParameterDefinitions = {
 {g1,        { Description -> "Hypercharge-Coupling"}},
 {g2,        { Description -> "Left-Coupling"}},
 {g3,        { Description -> "Strong-Coupling"}},    
+
+{g11p,        {Description -> "Mixed Gauge Coupling 2"}},
+{g1p1,        {Description -> "Mixed Gauge Coupling 1"}},
+{g1p,       {   Description -> "B-L-Coupling"}},
+
+{MZp,       {   Description -> "Z' mass"}},
+
 {AlphaS,    {Description -> "Alpha Strong"}},	
 {e,         { Description -> "electric charge"}}, 
 
