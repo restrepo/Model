@@ -103,6 +103,26 @@ ParameterDefinitions = {
                 LaTeX -> "\\mu^2",
 	        OutputName -> mH2}},
 
+{ZH,        { Description->"Scalar-Mixing-Matrix", 
+               Dependence -> None,
+               DependenceOptional -> None,
+               DependenceNum -> None   }},
+{ZA,        { Description->"Pseudo-Scalar-Mixing-Matrix", 
+              Dependence -> None,
+              DependenceOptional -> None,
+             DependenceNum -> None   }},
+
+{Vn, {LaTeX -> "V^n_R",
+      LesHouches -> VNRMIX,
+      OutputName -> ZNR }},
+
+{Un, {LaTeX -> "U^n_L",
+      LesHouches -> UNLMIX,
+      OutputName -> ZNL }},
+
+{Uz, {LaTeX -> "U^z_L",
+      LesHouches -> UZLMIX,
+      OutputName -> ZZL }},
 
 {MS2,       {Description -> "Softbreaking Up-Higgs Mass",
              LaTeX -> "M_S^2",

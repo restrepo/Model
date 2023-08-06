@@ -21,9 +21,27 @@ ParticleDefinitions[GaugeES] = {
       {VB,   { Description -> "B-Boson"}},                                                   
       {VG,   { Description -> "Gluon"}},          
       {VWB,  { Description -> "W-Bosons"}},          
-      {gB,   { Description -> "B-Boson Ghost"}},                                                   
+
+      {VBp,   { Description -> "Bp-Boson",
+                PDG -> {0},
+                PDG.IX -> {0},
+                Width -> 0, 
+                Mass -> 0,
+                FeynArtsNr -> 1,
+                LaTeX -> "B'",
+                OutputName -> "Bp" }},
+      
+      {gB,   { Description -> "B-Boson Ghost"}},
       {gG,   { Description -> "Gluon Ghost" }},          
-      {gWB,  { Description -> "W-Boson Ghost"}}
+      {gWB,  { Description -> "W-Boson Ghost"}},
+      {gBp,  { Description -> "Bp-Boson Ghost",
+               PDG -> {0},
+               PDG.IX -> {0},
+               Width -> 0, 
+               Mass -> 0,
+               FeynArtsNr -> 1,
+               LaTeX -> "\\eta^Bp",
+               OutputName -> "gBp"}}      
       
       };
       
@@ -31,8 +49,15 @@ ParticleDefinitions[GaugeES] = {
       
       
   ParticleDefinitions[EWSB] = {
-            
-      
+    {hh   ,  { Description -> "Higgs",
+                 PDG -> {25,35},
+                 Width -> Automatic, 
+                 Mass ->LesHouches,
+                 FeynArtsNr -> 1,
+                 LaTeX -> "h",
+                 OutputName -> "h" }}, 
+
+    
     {Rh   ,  {  Description -> "Higgs",
                 PDG -> {25},
 		            PDG.IX -> {101000001},
@@ -53,7 +78,16 @@ ParticleDefinitions[GaugeES] = {
                LHPC -> {"gold"},
        	       OutputName -> "Ss" }},
 
-                 
+    
+     {Ah   ,  {  Description -> "Pseudo-Scalar Higgs",
+                 PDG -> {0,0},
+                 Width -> {0,0}, 
+                 Mass -> {0,0},
+                 FeynArtsNr -> 2,
+                 LaTeX -> "A_h",
+                 OutputName -> "Ah" }},                      
+
+    
      {Bh   ,  {  Description -> "Pseudo-Scalar Higgs",
                  FeynArtsNr -> 2,
                  PDG -> {0},
