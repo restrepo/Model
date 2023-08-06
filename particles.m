@@ -97,7 +97,6 @@ ParticleDefinitions[GaugeES] = {
       
       
      {Hp,     { Description -> "Charged Higgs", 
-                 FeynArtsNr -> 3,
                  PDG -> {0},
                  PDG.IX ->{0},
                  Width -> {0}, 
@@ -123,11 +122,46 @@ ParticleDefinitions[GaugeES] = {
       {Fd,   { Description -> "Down-Quarks"}},   
       {Fu,   { Description -> "Up-Quarks"}},   
       {Fe,   { Description -> "Leptons" }},
-      {Fv,   { Description -> "Neutrinos" }}                                                              
-     
-        };    
-        
-        
+      {Fv,   { Description -> "Neutrinos" }},
+      {Fn,   { Description -> "Darkinos",
+	      PDG -> {1000001},
+	      PDG.IX -> {2000001},
+	      Mass -> LesHouches,
+              FeynArtsNr -> 11,
+              LaTeX -> "{\\chi}^0_n",
+              ElectricCharge -> 0,
+              LHPC -> {3, "orange"},
+              OutputName -> "N"}
+      },
+      {Fr,   { Description -> "Darkinos",
+	      PDG -> {1000011},
+	      PDG.IX -> {2000011},
+              FeynArtsNr -> 12,
+              LaTeX -> "{\\chi}^0_r",
+              OutputName -> "R"}
+      },
+      {Ft,   { Description -> "Darkinos",
+	      PDG -> {1000021},
+	      PDG.IX -> {2000021},
+              FeynArtsNr -> 13,
+              LaTeX -> "{\\chi}^0_t",
+              OutputName -> "T"}
+      },
+      {Fx,   { Description -> "Darkinos",
+	      PDG -> {1000031},
+	      PDG.IX -> {2000031},
+              FeynArtsNr -> 14,
+              LaTeX -> "{\\chi}^0_x",
+              OutputName -> "X"}
+      },
+      {Fz,   { Description -> "Darkinos",
+	      PDG -> {1000051,1000052,1000053},
+	      PDG.IX -> {2000051,2000052,2000053},
+              FeynArtsNr -> 14,
+              LaTeX -> "{\\chi}^0_x",
+              OutputName -> "X"}
+       }
+       };    
         
  WeylFermionAndIndermediate = {
      
