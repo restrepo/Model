@@ -1,14 +1,17 @@
 OnlyLowEnergySPheno = True;
 
 
-MINPAR={{1,Lambda1IN},
-        {2,LamSHIN},
-        {3,LamSIN},
-        {4,MSinput}
+MINPAR={{1,lambda1INPUT},
+        {2,Lambda2INPUT},
+        {3,Lambda3INPUT},
+        {4,LamSHINPUT},
+        {5,LamSINPUT},
+        {4,MSinput},
+        {20, vXINPUT}
         };
 
 
-ParametersToSolveTadpoles = {mH2};
+ParametersToSolveTadpoles = {MuP,mH2};
 
 DEFINITION[MatchingConditions]= {
  {Ye, YeSM},
@@ -21,23 +24,25 @@ DEFINITION[MatchingConditions]= {
  };
 
 BoundaryLowScaleInput={
-   
-  {Lambda1,Lambda1IN},
-  {LamSH,LamSHIN},
-  {LamS,LamSIN},
-  {MS2, MSInput}
+  {lambda1,lambda1INPUT},
+  {L2, Lambda2INPUT},
+  {L3, Lambda3INPUT},
+  {LamSH,LamSHINPUT},
+  {LamS,LamSINPUT},
+  {MS2, MSInput},
+  {vX,vXINPUT}
 };
 
-AddTreeLevelUnitarityLimits=True;
 
-
-
-ListDecayParticles = {Fu,Fe,Fd,Rh};
+ListDecayParticles = {Fu,Fe,Fd,Ah,hh};
 ListDecayParticles3B = {{Fu,"Fu.f90"},{Fe,"Fe.f90"},{Fd,"Fd.f90"}};
 
-FlagLoopContributions = True;  
 
-DefaultInputValues ={Lambda1IN -> 0.28, LamSHIN -> 0.01, LamSIN -> 0, MSinput -> 200};
+
+DefaultInputValues ={lambda1INPUT -> 0.28};
+
+AddTreeLevelUnitarityLimits=True;
+FlagLoopContributions = True;
 
 RenConditionsDecays={
 {dCosTW, 1/2*Cos[ThetaW] * (PiVWp/(MVWp^2) - PiVZ/(mVZ^2)) },

@@ -57,17 +57,6 @@ ParticleDefinitions[GaugeES] = {
                  LaTeX -> "h",
                  OutputName -> "h" }}, 
 
-    
-    {Rh   ,  {  Description -> "Higgs",
-                PDG -> {25},
-		            PDG.IX -> {101000001},
-                Mass -> LesHouches,
-                FeynArtsNr -> 1,
-                LaTeX -> "h",
-                ElectricCharge -> 0,
-                LHPC -> {1},
-		OutputName -> "h"  }}, 
-
     {ss   , {  Description -> "Singlet",
 	       PDG -> {6666635},
 	       PDG.IX -> {101000002},
@@ -79,22 +68,9 @@ ParticleDefinitions[GaugeES] = {
        	       OutputName -> "Ss" }},
 
     
-     {Ah   ,  {  Description -> "Pseudo-Scalar Higgs",
-                 PDG -> {0,0},
-                 Width -> {0,0}, 
-                 Mass -> {0,0},
-                 FeynArtsNr -> 2,
-                 LaTeX -> "A_h",
-                 OutputName -> "Ah" }},                      
+    {Ah   ,  {  Description -> "Pseudo-Scalar Higgs"}},
 
     
-     {Bh   ,  {  Description -> "Pseudo-Scalar Higgs",
-                 FeynArtsNr -> 2,
-                 PDG -> {0},
-                 PDG.IX ->{0},
-                 Mass -> {0},
-                 Width -> {0} }},                       
-      
       
      {Hp,     { Description -> "Charged Higgs", 
                  PDG -> {0},
@@ -108,7 +84,7 @@ ParticleDefinitions[GaugeES] = {
       
       {VP,   { Description -> "Photon"}}, 
       {VZ,   { Description -> "Z-Boson",
-      			 Goldstone -> Bh }}, 
+      			 Goldstone -> Ah[{1}] }}, 
       {VG,   { Description -> "Gluon" }},          
       {VWp,  { Description -> "W+ - Boson",
       			Goldstone -> Hp }},         

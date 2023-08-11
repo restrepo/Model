@@ -38,6 +38,8 @@ FermionFields[[5]] = {e, 3, conj[eR],       1, 1,  1,1};
 
 ScalarFields[[1]] =  {H, 1, {Hp, H0},     1/2, 2,  1,1};
 ScalarFields[[2]] =  {S, 1, ss,     0, 1,  1, -1};
+ScalarFields[[3]] =  {bi,1, BiD,    0, 1,  1, 1};
+
 RealScalars = {S};
 
 
@@ -52,13 +54,15 @@ NameOfStates={GaugeES, EWSB};
 (* ----- Before EWSB ----- *)
 
 DEFINITION[GaugeES][LagrangianInput]= {
-	{LagHC, {AddHC->True}},
-	{LagNoHC,{AddHC->False}}
+	{LagHC,    {AddHC->True}},
+	{LagNoHC,  {AddHC->False}},
+        {LagNoHCbi,{ AddHC->False}}
 };
 
 
-LagNoHC = -(mH2 conj[H].H + Lambda1/2 conj[H].H.conj[H].H + MS2/2 S.S + LamSH S.S.conj[H].H  + LamS/2 S.S.S.S);
+LagNoHC = -(mH2 conj[H].H + lambda1/2 conj[H].H.conj[H].H + MS2/2 S.S + LamSH S.S.conj[H].H  + LamS/2 S.S.S.S);
 LagHC =  -(Yd conj[H].d.q + Ye conj[H].e.l + Yu H.u.q);
+LagNoHCbi = -(MuP conj[bi].bi - L2 conj[bi].bi.conj[bi].bi - L3 conj[bi].bi.conj[H].H );
 
 
 
@@ -77,14 +81,22 @@ DEFINITION[EWSB][GaugeSector] =
 
 (* ----- VEVs ---- *)
 
-DEFINITION[EWSB][VEVs]= 
-{    {H0, {vH, 1/Sqrt[2]}, {Bh, \[ImaginaryI]/Sqrt[2]},{Rh, 1/Sqrt[2]}}     };
+ DEFINITION[EWSB][VEVs]= 
+{    {H0, {vH, 1/Sqrt[2]},  {sigmaH, \[ImaginaryI]/Sqrt[2]},{phiH, 1/Sqrt[2]}},
+     {BiD,{vX, 1/Sqrt[2]}, {sigmaB, \[ImaginaryI]/Sqrt[2]},{phiB, 1/Sqrt[2]}}
+  };
+ 
+
  
 
 DEFINITION[EWSB][MatterSector]=   
-    {{{{dL}, {conj[dR]}}, {{DL,Vd}, {DR,Ud}}},
+    {
+     {{phiH,phiB},{hh,ZH}},
+     {{sigmaH,sigmaB},{Ah,ZA}},
+     {{{dL}, {conj[dR]}}, {{DL,Vd}, {DR,Ud}}},
      {{{uL}, {conj[uR]}}, {{UL,Vu}, {UR,Uu}}},
-     {{{eL}, {conj[eR]}}, {{EL,Ve}, {ER,Ue}}}};  
+     {{{eL}, {conj[eR]}}, {{EL,Ve}, {ER,Ue}}}
+    };  
 
 
 (*------------------------------------------------------*)
