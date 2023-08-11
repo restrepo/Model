@@ -81,6 +81,7 @@ If [EvenSingletScalar,
 
 
 
+
 			  		  
 
 (* Gauge Sector *)
@@ -91,8 +92,22 @@ DEFINITION[EWSB][GaugeSector] =
   {{VWB[1],VWB[2]},{VWp,conj[VWp]},ZW}
 };     
         
-        
-          	
+
+If [EvenSingletScalar,
+  EWSBMatterSectorList =
+  {
+     {{phiH,phiB},{hh,ZH}},
+     {{sigmaH,sigmaB},{Ah,ZA}},
+     {{{dL}, {conj[dR]}}, {{DL,Vd}, {DR,Ud}}},
+     {{{uL}, {conj[uR]}}, {{UL,Vu}, {UR,Uu}}},
+     {{{eL}, {conj[eR]}}, {{EL,Ve}, {ER,Ue}}}
+    };
+];
+
+
+(* WARNING: Avoid code after here *)
+
+
 
 (* ----- VEVs ---- *)
 
@@ -107,14 +122,7 @@ DEFINITION[EWSB][VEVs] =
 
 
 
-DEFINITION[EWSB][MatterSector] =   
-    {
-     {{phiH,phiB},{hh,ZH}},
-     {{sigmaH,sigmaB},{Ah,ZA}},
-     {{{dL}, {conj[dR]}}, {{DL,Vd}, {DR,Ud}}},
-     {{{uL}, {conj[uR]}}, {{UL,Vu}, {UR,Uu}}},
-     {{{eL}, {conj[eR]}}, {{EL,Ve}, {ER,Ue}}}
-    };
+DEFINITION[EWSB][MatterSector] = EWSBMatterSectorList;
 
 (*------------------------------------------------------*)
 (* Dirac-Spinors *)
