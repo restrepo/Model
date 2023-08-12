@@ -6,12 +6,16 @@ OnlyLowEnergySPheno = True;
 MINPAR={{1,lambda1INPUT},
         {2,LamSHINPUT},
         {3,LamSINPUT},
-        {4,MSinput},
-        {5,Lambda2INPUT},
-        {6,Lambda3INPUT},
-        {20, vXINPUT}
+        {4,MSinput}
         };
-
+If[EvenSingletScalar,
+  MINPAR = Join[MINPAR,
+              {{5,Lambda2INPUT},
+               {6,Lambda3INPUT},
+               {20,vXINPUT}
+               }
+             ];
+  ];
 
 ParametersToSolveTadpoles = {MuP,mH2};
 
@@ -29,14 +33,26 @@ BoundaryLowScaleInput={
   {lambda1,lambda1INPUT},
   {LamSH,LamSHINPUT},
   {LamS,LamSINPUT},
-  {MS2, MSInput},
-  {L2, Lambda2INPUT},
-  {L3, Lambda3INPUT},
-  {vX,vXINPUT}
+  {MS2, MSInput}
 };
+If [EvenSingletScalar,
+  BoundaryLowScaleInput = Join[BoundaryLowScaleInput,
+                              {  {L2, Lambda2INPUT},
+                                 {L3, Lambda3INPUT},
+                                 {vX,vXINPUT}
+                               }
+                              ];
+  ];
 
 
-ListDecayParticles = {Fu,Fe,Fd,Ah,hh};
+ListDecayParticles = {Fu,Fe,Fd};
+If[EvenSingletScalar,
+  ListDecayParticles = Join[ListDecayParticles,
+                            {Ah,hh}];,
+  ListDecayParticles = Join[ListDecayParticles,
+                            {Rh}];
+  ];
+
 ListDecayParticles3B = {{Fu,"Fu.f90"},{Fe,"Fe.f90"},{Fd,"Fd.f90"}};
 
 
