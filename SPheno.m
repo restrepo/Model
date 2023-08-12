@@ -3,7 +3,7 @@ Get[FileNameJoin[{$sarahDir,"Models",Model`Name,"config.m"}]];
 OnlyLowEnergySPheno = True;
 
 
-MINPAR={{1,lambda1INPUT},
+MINPAR={{1,Lambda1INPUT},
         {2,LamSHINPUT},
         {3,LamSINPUT},
         {4,MSinput}
@@ -30,7 +30,7 @@ DEFINITION[MatchingConditions]= {
  };
 
 BoundaryLowScaleInput={
-  {lambda1,lambda1INPUT},
+  {Lambda1,Lambda1INPUT},
   {LamSH,LamSHINPUT},
   {LamS,LamSINPUT},
   {MS2, MSInput}
@@ -57,7 +57,7 @@ ListDecayParticles3B = {{Fu,"Fu.f90"},{Fe,"Fe.f90"},{Fd,"Fd.f90"}};
 
 
 
-DefaultInputValues ={lambda1INPUT -> 0.28};
+DefaultInputValues ={Lambda1INPUT -> 0.28};
 
 AddTreeLevelUnitarityLimits=True;
 FlagLoopContributions = True;

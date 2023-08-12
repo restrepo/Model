@@ -1,12 +1,12 @@
 (*Reads configuration file in both unix and windows*)
 Get[FileNameJoin[{$sarahDir,"Models",Model`Name,"config.m"}]];
 
-(* TODO: unify lambda1 and Lambda1 notation *)
 If[EvenSingletScalar,
+      Lambda1list={Lambda1,  {OutputName -> lam1,
+                              LaTeX -> "\\lambda_1",
+                              LesHouches -> {BL,1}}};,
       Lambda1list={Lambda1, { Description -> "SM Higgs Selfcouplings",
-               DependenceNum -> Mass[hh]^2/(vH^2)}};
-      Lambda1list={Lambda1, { Description -> "SM Higgs Selfcouplings",
-               DependenceNum -> Mass[Rh]^2/(vH^2)}};
+                              DependenceNum -> Mass[Rh]^2/(vH^2)}};
 ];
 
 ParameterDefinitions = { 
@@ -58,10 +58,6 @@ ParameterDefinitions = {
 {ZW, {Description -> "W Mixing Matrix",
        Dependence ->   1/Sqrt[2] {{1, 1},
                   {\[ImaginaryI],-\[ImaginaryI]}} }},
-
-{lambda1,  {OutputName -> lam1,
-            LaTeX -> "\\lambda_1",
-            LesHouches -> {BL,1}}},
 
 {L2, {OutputName -> lam2,
       LaTeX -> "\\lambda_2",
