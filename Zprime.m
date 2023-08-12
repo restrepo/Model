@@ -101,6 +101,12 @@ If [EvenSingletScalar,
      {{{dL}, {conj[dR]}}, {{DL,Vd}, {DR,Ud}}},
      {{{uL}, {conj[uR]}}, {{UL,Vu}, {UR,Uu}}},
      {{{eL}, {conj[eR]}}, {{EL,Ve}, {ER,Ue}}}
+    };,
+  EWSBMatterSectorList =
+  {
+     {{{dL}, {conj[dR]}}, {{DL,Vd}, {DR,Ud}}},
+     {{{uL}, {conj[uR]}}, {{UL,Vu}, {UR,Uu}}},
+     {{{eL}, {conj[eR]}}, {{EL,Ve}, {ER,Ue}}}
     };
 ];
 
