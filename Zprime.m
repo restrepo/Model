@@ -1,7 +1,7 @@
 Off[General::spell]
 
 Model`Name = "Zprime"; (*Must coincide with directory name*)
-Model`NameLaTeX ="Singlet scalar Dark Matter";
+Model`NameLaTeX ="Singlet scalar Dark Matter with complex even singlet scalar";
 Model`Authors = "Diego Restrepo (based on SM model by F.Staub)";
 Model`Date = "2015-11-16";
 (*Reads configuration file in both unix and windows*)

@@ -48,8 +48,6 @@ ParticleDefinitions[GaugeES] = {
       
 
   If [EvenSingletScalar,
-        VZlist = {VZ,   { Description -> "Z-Boson",
-      			 Goldstone -> Ah[{1}] }};
         Ahlist = {Ah   ,  {  Description -> "Pseudo-Scalar Higgs"}};
         hhlist = {hh   ,  { Description -> "Higgs",
                  PDG -> {25,35},
@@ -57,9 +55,9 @@ ParticleDefinitions[GaugeES] = {
                  Mass ->LesHouches,
                  FeynArtsNr -> 1,
                  LaTeX -> "h",
-                 OutputName -> "h" }};,
+                 OutputName -> "h" }};
         VZlist = {VZ,   { Description -> "Z-Boson",
-      			 Goldstone -> Bh }};
+      			 Goldstone -> Ah[{1}] }};,
         Ahlist = {Bh   ,  {  Description -> "Pseudo-Scalar Higgs",
                  FeynArtsNr -> 2,
                  PDG -> {0},
@@ -75,6 +73,8 @@ ParticleDefinitions[GaugeES] = {
                 ElectricCharge -> 0,
                 LHPC -> {1},
 		OutputName -> "h"  }};
+        VZlist = {VZ,   { Description -> "Z-Boson",
+      			 Goldstone -> Bh }};                
      ];      
       
       
