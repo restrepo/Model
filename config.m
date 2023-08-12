@@ -1,1 +1,1 @@
-EvenSingletScalar=False; (* SSDM + Complex even singlet scalar *)
+EvenSingletScalar=True; (* SSDM + Complex even singlet scalar *)
