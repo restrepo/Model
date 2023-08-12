@@ -1,12 +1,14 @@
+(*Reads configuration file in both unix and windows*)
+Get[FileNameJoin[{$sarahDir,"Models",Model`Name,"config.m"}]];
 OnlyLowEnergySPheno = True;
 
 
 MINPAR={{1,lambda1INPUT},
-        {2,Lambda2INPUT},
-        {3,Lambda3INPUT},
-        {4,LamSHINPUT},
-        {5,LamSINPUT},
+        {2,LamSHINPUT},
+        {3,LamSINPUT},
         {4,MSinput},
+        {5,Lambda2INPUT},
+        {6,Lambda3INPUT},
         {20, vXINPUT}
         };
 
@@ -25,11 +27,11 @@ DEFINITION[MatchingConditions]= {
 
 BoundaryLowScaleInput={
   {lambda1,lambda1INPUT},
-  {L2, Lambda2INPUT},
-  {L3, Lambda3INPUT},
   {LamSH,LamSHINPUT},
   {LamS,LamSINPUT},
   {MS2, MSInput},
+  {L2, Lambda2INPUT},
+  {L3, Lambda3INPUT},
   {vX,vXINPUT}
 };
 
