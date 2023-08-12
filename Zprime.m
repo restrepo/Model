@@ -44,8 +44,8 @@ FermionFields[[5]] = {e, 3, conj[eR],       1, 1,  1,1};
 ScalarFields[[NS]] =  {H, 1, {Hp, H0},     1/2, 2,  1,1};
 NS = NS + 1;
 ScalarFields[[NS]] =  {S, 1, ss,     0, 1,  1, -1};
-NS = NS + 1;
 If [EvenSingletScalar,
+    NS = NS + 1;
     ScalarFields[[NS]] =  {bi,1, BiD,    0, 1,  1, 1};
 ];
 
@@ -94,7 +94,7 @@ DEFINITION[EWSB][GaugeSector] =
   {{VWB[1],VWB[2]},{VWp,conj[VWp]},ZW}
 };     
         
-
+(* Last safe place to implement code here. Define lists to be used later on *)
 If [EvenSingletScalar,
   EWSBMatterSectorList =
   {

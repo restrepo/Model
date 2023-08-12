@@ -17,7 +17,12 @@ If[EvenSingletScalar,
              ];
   ];
 
-ParametersToSolveTadpoles = {MuP,mH2};
+ParametersToSolveTadpoles = {mH2};
+If[EvenSingletScalar,
+  ParametersToSolveTadpoles = Join[ParametersToSolveTadpoles,
+                                   {MuP}];
+  ];
+  
 
 DEFINITION[MatchingConditions]= {
  {Ye, YeSM},
