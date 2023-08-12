@@ -6,7 +6,7 @@ If[EvenSingletScalar,
                               LaTeX -> "\\lambda_1",
                               LesHouches -> {BL,1}}};,
       Lambda1list={Lambda1, { Description -> "SM Higgs Selfcouplings",
-                              DependenceNum -> Mass[Rh]^2/(vH^2)}};
+                              DependenceNum -> Mass[hh]^2/(vH^2)}};
 ];
 
 ParameterDefinitions = { 

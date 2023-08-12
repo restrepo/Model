@@ -58,15 +58,15 @@ ParticleDefinitions[GaugeES] = {
                  OutputName -> "h" }};
         VZlist = {VZ,   { Description -> "Z-Boson",
       			 Goldstone -> Ah[{1}] }};,
-        Ahlist = {Bh   ,  {  Description -> "Pseudo-Scalar Higgs",
+        Ahlist = {Ah   ,  {  Description -> "Pseudo-Scalar Higgs",
                  FeynArtsNr -> 2,
                  PDG -> {0},
                  PDG.IX ->{0},
                  Mass -> {0},
                  Width -> {0} }};
-        hhlist = {Rh   ,  {  Description -> "Higgs",
+        hhlist = {hh   ,  {  Description -> "Higgs",
                 PDG -> {25},
-		            PDG.IX -> {101000001},
+		PDG.IX -> {101000001},
                 Mass -> LesHouches,
                 FeynArtsNr -> 1,
                 LaTeX -> "h",
@@ -74,7 +74,7 @@ ParticleDefinitions[GaugeES] = {
                 LHPC -> {1},
 		OutputName -> "h"  }};
         VZlist = {VZ,   { Description -> "Z-Boson",
-      			 Goldstone -> Bh }};                
+      			 Goldstone -> Ah }};                
      ];      
       
       

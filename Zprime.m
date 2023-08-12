@@ -125,7 +125,7 @@ If [EvenSingletScalar,
      {BiD,{vX, 1/Sqrt[2]}, {sigmaB, \[ImaginaryI]/Sqrt[2]},{phiB, 1/Sqrt[2]}}
   };,
 DEFINITION[EWSB][VEVs] = 
-{    {H0, {vH, 1/Sqrt[2]}, {Bh, \[ImaginaryI]/Sqrt[2]},{Rh, 1/Sqrt[2]}}     };
+{    {H0, {vH, 1/Sqrt[2]}, {Ah, \[ImaginaryI]/Sqrt[2]},{hh, 1/Sqrt[2]}}     };
 ];
 
 

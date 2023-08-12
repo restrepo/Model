@@ -55,7 +55,7 @@ If[EvenSingletScalar,
   ListDecayParticles = Join[ListDecayParticles,
                             {Ah,hh}];,
   ListDecayParticles = Join[ListDecayParticles,
-                            {Rh}];
+                            {hh}];
   ];
 
 ListDecayParticles3B = {{Fu,"Fu.f90"},{Fe,"Fe.f90"},{Fd,"Fd.f90"}};
