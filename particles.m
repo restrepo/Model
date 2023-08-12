@@ -1,4 +1,5 @@
-
+(*Reads configuration file in both unix and windows*)
+Get[FileNameJoin[{$sarahDir,"Models",Model`Name,"config.m"}]];
 
 ParticleDefinitions[GaugeES] = {
       {H0,  {    PDG -> {0},
@@ -45,17 +46,23 @@ ParticleDefinitions[GaugeES] = {
       
       };
       
-      
-      
-      
-  ParticleDefinitions[EWSB] = {
-    {hh   ,  { Description -> "Higgs",
+
+  If [EvenSingletScalar,
+      VZlist = {VZ,   { Description -> "Z-Boson",
+      			 Goldstone -> Ah[{1}] }};
+      Ahlist = {Ah   ,  {  Description -> "Pseudo-Scalar Higgs"}};
+      hhlist = {hh   ,  { Description -> "Higgs",
                  PDG -> {25,35},
                  Width -> Automatic, 
                  Mass ->LesHouches,
                  FeynArtsNr -> 1,
                  LaTeX -> "h",
-                 OutputName -> "h" }}, 
+                 OutputName -> "h" }};                    
+     ];      
+      
+      
+  ParticleDefinitions[EWSB] = {
+    hhlist, 
 
     {ss   , {  Description -> "Singlet",
 	       PDG -> {6666635},
@@ -68,7 +75,7 @@ ParticleDefinitions[GaugeES] = {
        	       OutputName -> "Ss" }},
 
     
-    {Ah   ,  {  Description -> "Pseudo-Scalar Higgs"}},
+    Ahlist,
 
     
       
@@ -82,9 +89,8 @@ ParticleDefinitions[GaugeES] = {
                  OutputName -> {"Hp","Hm"}
                  }},                                                   
       
-      {VP,   { Description -> "Photon"}}, 
-      {VZ,   { Description -> "Z-Boson",
-      			 Goldstone -> Ah[{1}] }}, 
+      {VP,   { Description -> "Photon"}},
+      VZlist,
       {VG,   { Description -> "Gluon" }},          
       {VWp,  { Description -> "W+ - Boson",
       			Goldstone -> Hp }},         

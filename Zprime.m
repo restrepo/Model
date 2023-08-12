@@ -1,9 +1,11 @@
 Off[General::spell]
 
-Model`Name = "Zprime";
+Model`Name = "Zprime"; (*Must coincide with directory name*)
 Model`NameLaTeX ="Singlet scalar Dark Matter";
 Model`Authors = "Diego Restrepo (based on SM model by F.Staub)";
 Model`Date = "2015-11-16";
+(*Reads configuration file in both unix and windows*)
+Get[FileNameJoin[{$sarahDir,"Models",Model`Name,"config.m"}]];
 
 (* 2013-01-24: changed normalization of lambda term to convention of hep-ph/0207271 *)
 (* 2013-06-24: using new name conventions (without inital "S" and "F" for scalar and matter fields) *)
@@ -30,7 +32,7 @@ Gauge[[3]]={G,  SU[3], color,       g3,False,1};
 
 
 (* Matter Fields *)
-EvenSingletScalar = True; (*TODO: move to config*)
+
 NS = 1;
 
 FermionFields[[1]] = {q, 3, {uL, dL},     1/6, 2,  3,1};  
