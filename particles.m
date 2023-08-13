@@ -1,5 +1,9 @@
 (*Reads configuration file in both unix and windows*)
 Get[FileNameJoin[{$sarahDir,"Models",Model`Name,"config.m"}]];
+If [GaugeU1,
+    EvenSingletScalar = True;
+];
+
 
 ParticleDefinitions[GaugeES] = {
       {H0,  {    PDG -> {0},
@@ -75,7 +79,14 @@ ParticleDefinitions[GaugeES] = {
 		OutputName -> "h"  }};
         VZlist = {VZ,   { Description -> "Z-Boson",
       			 Goldstone -> Ah }};                
-     ];      
+     ];
+     If [GaugeU1,
+        VZplist = {VZp,    { Description -> "Z'-Boson",
+      		             Goldstone -> Ah[{2}]}
+                  };,
+        VZplist = {VZp,    {LaTeX -> "None" }
+                  };
+     ];
       
       
   ParticleDefinitions[EWSB] = {

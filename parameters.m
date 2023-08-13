@@ -1,5 +1,9 @@
 (*Reads configuration file in both unix and windows*)
 Get[FileNameJoin[{$sarahDir,"Models",Model`Name,"config.m"}]];
+If [GaugeU1,
+    EvenSingletScalar = True;
+];
+
 
 If[EvenSingletScalar,
       Lambda1list={Lambda1,  {OutputName -> lam1,

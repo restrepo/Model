@@ -6,6 +6,10 @@ Model`Authors = "Diego Restrepo (based on SM model by F.Staub)";
 Model`Date = "2015-11-16";
 (*Reads configuration file in both unix and windows*)
 Get[FileNameJoin[{$sarahDir,"Models",Model`Name,"config.m"}]];
+(* Adjust configuration variables *)
+If [GaugeU1,
+    EvenSingletScalar = True;
+];
 
 (* 2013-01-24: changed normalization of lambda term to convention of hep-ph/0207271 *)
 (* 2013-06-24: using new name conventions (without inital "S" and "F" for scalar and matter fields) *)
