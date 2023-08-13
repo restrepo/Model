@@ -33,21 +33,39 @@ Gauge[[3]]={G,  SU[3], color,       g3,False,1};
 
 (* Matter Fields *)
 
-NS = 1;
+{NS,NF} = {1,1};
+(* Even fermion fields *)
+FermionFields[[NF]] = {q, 3, {uL, dL},     1/6, 2,  3};
+NF = NF + 1;
+FermionFields[[NF]] = {l, 3, {vL, eL},    -1/2, 2,  1};
+NF = NF + 1;
+FermionFields[[NF]] = {d, 3, conj[dR],     1/3, 1, -3};
+NF = NF + 1;
+FermionFields[[NF]] = {u, 3, conj[uR],    -2/3, 1, -3};
+NF = NF + 1;
+FermionFields[[NF]] = {e, 3, conj[eR],       1, 1,  1};
+Do [ 
+  FermionFields[[i]] = Join[FermionFields[[i]],{1}];, {i,1,NF}
+   ];
+(* Odd fermion fields *)
 
-FermionFields[[1]] = {q, 3, {uL, dL},     1/6, 2,  3,1};  
-FermionFields[[2]] = {l, 3, {vL, eL},    -1/2, 2,  1,1};
-FermionFields[[3]] = {d, 3, conj[dR],     1/3, 1, -3,1};
-FermionFields[[4]] = {u, 3, conj[uR],    -2/3, 1, -3,1};
-FermionFields[[5]] = {e, 3, conj[eR],       1, 1,  1,1};
-
-ScalarFields[[NS]] =  {H, 1, {Hp, H0},     1/2, 2,  1,1};
-NS = NS + 1;
-ScalarFields[[NS]] =  {S, 1, ss,     0, 1,  1, -1};
+(*Even scalar fields*)
+ScalarFields[[NS]] =  {H, 1, {Hp, H0},     1/2, 2,  1};
 If [EvenSingletScalar,
     NS = NS + 1;
-    ScalarFields[[NS]] =  {bi,1, BiD,    0, 1,  1, 1};
+    ScalarFields[[NS]] =  {bi,1, BiD,    0, 1,  1};
 ];
+Do [ 
+  ScalarFields[[i]] = Join[ScalarFields[[i]],{1}];, {i,1,NS}
+   ];
+
+(* Odd scalar fields*)
+NS = NS + 1;
+NSO = NS;
+ScalarFields[[NS]] =  {S, 1, ss,     0, 1,  1};
+Do [ 
+  ScalarFields[[i]] = Join[ScalarFields[[i]],{-1}];, {i,NSO,NS}
+   ];
 
 RealScalars = {S};
 
