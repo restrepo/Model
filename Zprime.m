@@ -107,13 +107,7 @@ If [EvenSingletScalar,
 ];
 
 
-
-
-			  		  
-
 (* Gauge Sector *)
-(*{{VB,VWB[3]},{VP,VZ},ZZ}*)
-     
 
 If [GaugeU1,
   DEFINITION[EWSB][GaugeSector] = { 

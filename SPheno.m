@@ -57,10 +57,12 @@ If [EvenSingletScalar,
 
 ListDecayParticles = {Fu,Fe,Fd};
 If[EvenSingletScalar,
-  ListDecayParticles = Join[ListDecayParticles,
-                            {hh,VZp}];
-  (*If [GaugeU1,Join[ListDecayParticles,
-                            {VZp}]];*)
+  If[GaugeU1,
+    ListDecayParticles = Join[ListDecayParticles,
+                            {hh,VZp}];,
+    ListDecayParticles = Join[ListDecayParticles,
+                            {hh,Ah}];
+    ];
   ,
   ListDecayParticles = Join[ListDecayParticles,
                             {hh}];
