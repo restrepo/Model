@@ -113,12 +113,18 @@ If [EvenSingletScalar,
 
 (* Gauge Sector *)
 (*{{VB,VWB[3]},{VP,VZ},ZZ}*)
+     
 
-DEFINITION[EWSB][GaugeSector] =
-{ 
-  {{VB,VWB[3],VBp},{VP,VZ,VZp},ZZ},  
-  {{VWB[1],VWB[2]},{VWp,conj[VWp]},ZW}
-};     
+If [GaugeU1,
+  DEFINITION[EWSB][GaugeSector] = { 
+    {{VB,VWB[3],VBp},{VP,VZ,VZp},ZZ},  
+    {{VWB[1],VWB[2]},{VWp,conj[VWp]},ZW}
+  };,
+  DEFINITION[EWSB][GaugeSector] = { 
+    {{VB,VWB[3]},{VP,VZ},ZZ},  
+    {{VWB[1],VWB[2]},{VWp,conj[VWp]},ZW}
+  };
+];
         
 (* Last safe place to implement code here. Define lists to be used later on *)
 If [EvenSingletScalar,
