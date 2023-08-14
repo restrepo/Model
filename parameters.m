@@ -12,6 +12,7 @@ If[EvenSingletScalar,
       Lambda1list={Lambda1, { Description -> "SM Higgs Selfcouplings",
                               DependenceNum -> Mass[hh]^2/(vH^2)}};
 ];
+(*{ZZ, {Description -> "Photon-Z Mixing Matrix"}},*)
 
 ParameterDefinitions = { 
 
@@ -58,7 +59,8 @@ ParameterDefinitions = {
 
 {ThetaWp,  { Description -> "Theta'", DependenceNum -> None  }},
 
-{ZZ, {Description -> "Photon-Z Mixing Matrix"}},
+{ZZ, {Description ->   "Photon-Z-Z' Mixing Matrix"}},
+
 {ZW, {Description -> "W Mixing Matrix",
        Dependence ->   1/Sqrt[2] {{1, 1},
                   {\[ImaginaryI],-\[ImaginaryI]}} }},

@@ -33,31 +33,34 @@ Global[[1]] = {Z[2], Z2};
 Gauge[[1]]={B,   U[1], hypercharge, g1,False,1};
 Gauge[[2]]={WB, SU[2], left,        g2,True,1};
 Gauge[[3]]={G,  SU[3], color,       g3,False,1};
+(* name of the charge needs at least 3 characters *)
+Gauge[[4]]={Bp,  U[1], XXX,       g1p, False,1}; (* False as in the official B-L Model *)
+
 
 
 (* Matter Fields *)
 
 {NS,NF} = {1,1};
 (* Even fermion fields *)
-FermionFields[[NF]] = {q, 3, {uL, dL},     1/6, 2,  3};
+FermionFields[[NF]] = {q, 3, {uL, dL},     1/6, 2,  3, 0};
 NF = NF + 1;
-FermionFields[[NF]] = {l, 3, {vL, eL},    -1/2, 2,  1};
+FermionFields[[NF]] = {l, 3, {vL, eL},    -1/2, 2,  1, 0};
 NF = NF + 1;
-FermionFields[[NF]] = {d, 3, conj[dR],     1/3, 1, -3};
+FermionFields[[NF]] = {d, 3, conj[dR],     1/3, 1, -3, 0};
 NF = NF + 1;
-FermionFields[[NF]] = {u, 3, conj[uR],    -2/3, 1, -3};
+FermionFields[[NF]] = {u, 3, conj[uR],    -2/3, 1, -3, 0};
 NF = NF + 1;
-FermionFields[[NF]] = {e, 3, conj[eR],       1, 1,  1};
+FermionFields[[NF]] = {e, 3, conj[eR],       1, 1,  1, 0};
 Do [ 
   FermionFields[[i]] = Join[FermionFields[[i]],{1}];, {i,1,NF}
    ];
 (* Odd fermion fields *)
 
 (*Even scalar fields*)
-ScalarFields[[NS]] =  {H, 1, {Hp, H0},     1/2, 2,  1};
+ScalarFields[[NS]] =  {H, 1, {Hp, H0},     1/2, 2,  1, 0};
 If [EvenSingletScalar,
     NS = NS + 1;
-    ScalarFields[[NS]] =  {bi,1, BiD,    0, 1,  1};
+    ScalarFields[[NS]] =  {bi,1, BiD,    0, 1,  1, 2};
 ];
 Do [ 
   ScalarFields[[i]] = Join[ScalarFields[[i]],{1}];, {i,1,NS}
@@ -66,7 +69,7 @@ Do [
 (* Odd scalar fields*)
 NS = NS + 1;
 NSO = NS;
-ScalarFields[[NS]] =  {S, 1, ss,     0, 1,  1};
+ScalarFields[[NS]] =  {S, 1, ss,     0, 1,  1, 0};
 Do [ 
   ScalarFields[[i]] = Join[ScalarFields[[i]],{-1}];, {i,NSO,NS}
    ];
@@ -109,10 +112,11 @@ If [EvenSingletScalar,
 			  		  
 
 (* Gauge Sector *)
+(*{{VB,VWB[3]},{VP,VZ},ZZ}*)
 
 DEFINITION[EWSB][GaugeSector] =
 { 
-  {{VB,VWB[3]},{VP,VZ},ZZ},
+  {{VB,VWB[3],VBp},{VP,VZ,VZp},ZZ},  
   {{VWB[1],VWB[2]},{VWp,conj[VWp]},ZW}
 };     
         
