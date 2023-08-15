@@ -33,11 +33,11 @@ Global[[1]] = {Z[2], Z2};
 Gauge[[1]]={B,   U[1], hypercharge, g1,False,1};
 Gauge[[2]]={WB, SU[2], left,        g2,True,1};
 Gauge[[3]]={G,  SU[3], color,       g3,False,1};
-(* name of the charge needs at least 3 characters *)
-Gauge[[4]]={Bp,  U[1], XXX,       g1p, False,1}; (* False as in the official B-L Model *)
-
-
-{Xq,Xl,Xd,Xu,Xe,XH,Xbi}={0, 0, 0, 0, 0, 0, 2};
+If [GaugeU1
+    (* name of the charge needs at least 3 characters *)
+    Gauge[[4]]={Bp,  U[1], XXX,       g1p, False,1}; (* False as in the official B-L Model *)
+    {Xq,Xl,Xd,Xu,Xe,XH,Xbi}={0, 0, 0, 0, 0, 0, 2};
+];
 
 (* Matter Fields *)
 
