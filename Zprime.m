@@ -37,7 +37,7 @@ Gauge[[3]]={G,  SU[3], color,       g3,False,1};
 Gauge[[4]]={Bp,  U[1], XXX,       g1p, False,1}; (* False as in the official B-L Model *)
 
 
-{Xq,Xl,Xd,Xu,Xe,XH,Xbi}={0, 0, 0, 0, 0, 0, -2};
+{Xq,Xl,Xd,Xu,Xe,XH,Xbi}={0, 0, 0, 0, 0, 0, 2};
 
 (* Matter Fields *)
 
@@ -74,16 +74,22 @@ Do [
 (* Odd fermion fields *)
 
 (*Even scalar fields*)
-ScalarFields[[NS]] =  {H, 1, {Hp, H0},     1/2, 2,  1, 0};
+ScalarFields[[NS]] =  {H, 1, {Hp, H0},     1/2, 2,  1};
+If [GaugeU1,
+    ScalarFields[[NS]] = Join[ScalarFields[[NS]],{XH}];
+];
 If [EvenSingletScalar,
     NS = NS + 1;
-    ScalarFields[[NS]] =  {bi,1, BiD,    0, 1,  1, 2};
+    ScalarFields[[NS]] =  {bi,1, BiD,    0, 1,  1};
+    If [GaugeU1,
+        ScalarFields[[NS]] = Join[ScalarFields[[NS]],{Xbi}];
+    ];
 ];
 Do [ 
   ScalarFields[[i]] = Join[ScalarFields[[i]],{1}];, {i,1,NS}
    ];
 
-(* Odd scalar fields*)
+(* Odd neutral scalar fields*)
 NS = NS + 1;
 NSO = NS;
 ScalarFields[[NS]] =  {S, 1, ss,     0, 1,  1, 0};
