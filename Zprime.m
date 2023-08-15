@@ -42,35 +42,36 @@ If [GaugeU1,
 
 (* Matter Fields *)
 
-{NS,NF} = {1,1};
+(* SM fermion fields *)
+{NS,nF} = {1,1};
 (* Even fermion fields *)
-FermionFields[[NF]] = {q, 3, {uL, dL},     1/6, 2,  3};
+FermionFields[[nF]] = {q, 3, {uL, dL},     1/6, 2,  3};
 If [GaugeU1,
-    FermionFields[[NF]] = Join[FermionFields[[NF]],{Xq}];
+    FermionFields[[nF]] = Join[FermionFields[[nF]],{Xq}];
 ];
-NF = NF + 1;
-FermionFields[[NF]] = {l, 3, {vL, eL},    -1/2, 2,  1};
+nF = nF + 1;
+FermionFields[[nF]] = {l, 3, {vL, eL},    -1/2, 2,  1};
 If [GaugeU1,
-    FermionFields[[NF]] = Join[FermionFields[[NF]],{Xl}];
+    FermionFields[[nF]] = Join[FermionFields[[nF]],{Xl}];
 ];
-NF = NF + 1;
-FermionFields[[NF]] = {d, 3, conj[dR],     1/3, 1, -3};
+nF = nF + 1;
+FermionFields[[nF]] = {d, 3, conj[dR],     1/3, 1, -3};
 If [GaugeU1,
-    FermionFields[[NF]] = Join[FermionFields[[NF]],{Xd}];
+    FermionFields[[nF]] = Join[FermionFields[[nF]],{Xd}];
 ];
-NF = NF + 1;
-FermionFields[[NF]] = {u, 3, conj[uR],    -2/3, 1, -3};
+nF = nF + 1;
+FermionFields[[nF]] = {u, 3, conj[uR],    -2/3, 1, -3};
 If [GaugeU1,
-    FermionFields[[NF]] = Join[FermionFields[[NF]],{Xu}];
+    FermionFields[[nF]] = Join[FermionFields[[nF]],{Xu}];
 ];
-NF = NF + 1;
-FermionFields[[NF]] = {e, 3, conj[eR],       1, 1,  1};
+nF = nF + 1;
+FermionFields[[nF]] = {e, 3, conj[eR],       1, 1,  1};
 If [GaugeU1,
-    FermionFields[[NF]] = Join[FermionFields[[NF]],{Xe}];
+    FermionFields[[nF]] = Join[FermionFields[[nF]],{Xe}];
 ];
 (* Z2 charges *)
 Do [ 
-  FermionFields[[i]] = Join[FermionFields[[i]],{1}];, {i,1,NF}
+  FermionFields[[i]] = Join[FermionFields[[i]],{1}];, {i,1,nF}
    ];
 (* Odd fermion fields *)
 
@@ -103,7 +104,29 @@ Do [
 
 RealScalars = {S};
 
+(* XXX charges initialization *)
+{Xn,Xp,Xr,Xs,Xt,Xw,Xx,Xy,Xz}={0,0,0,0,0,0,0,0,0};
 
+(******* BEGIN: XXX-charged BSM chiral or vector-like fermion fields *******)
+If[GaugeU1,
+  (* TODO: Get charges from Module *)
+  (** 
+    Anomaly solution: Capital letters may include generations
+    {D,i,r,a,c,0,...,m,a,j,o,r,A,n,    A}: 
+     D->nDG,                   A->nWG, A -> nMG 
+     {nDG,nWG,nMG} from config.m
+  **)
+  {Xn,Xp,Xr,Xs,Xt,Xw,Xx,Xy,Xz}={1/5,-1/5,0,0,0,0,0,0,0};
+
+  (* Multi-generation Dirac Fermions -> Fix PDG numbers in particles.m *)
+  If[Xn != 0 && Xp != 0,
+    nF=nF+1;
+    FermionFields[[nF]] = {n, nDG, nL,	    0, 1,  1, Xn, -1};
+    nF=nF+1;
+    FermionFields[[nF]] = {p, nDG, conj[pR], 0, 1,  1, Xp, -1};
+  ];
+];
+(******* END: XXX-charged BSM chiral or vector-like fermion fields *********)
 
         
 (*----------------------------------------------*)
@@ -115,7 +138,7 @@ NameOfStates={GaugeES, EWSB};
 (* ----- Before EWSB ----- *)
 
 DEFINITION[GaugeES][LagrangianInput] = {
-	{LagHC,    {AddHC->True}},
+	{LagFer,    {AddHC->True}},
 	{LagNoHC,  {AddHC->False}}
 };
 
@@ -128,10 +151,22 @@ If [EvenSingletScalar,
 
 
 LagNoHC = -(mH2 conj[H].H + Lambda1/2 conj[H].H.conj[H].H + MS2/2 S.S + LamSH S.S.conj[H].H  + LamS/2 S.S.S.S);
-LagHC =  -(Yd conj[H].d.q + Ye conj[H].e.l + Yu H.u.q);
+LagFer =  -(Yd conj[H].d.q + Ye conj[H].e.l + Yu H.u.q);
 If [EvenSingletScalar,
     LagNoHCbi = -(MuP conj[bi].bi - L2 conj[bi].bi.conj[bi].bi - L3 conj[bi].bi.conj[H].H );
 ];
+
+(*** BEGIN: Extends LagFer with chiral XXX-charged fermions ***)
+(* (Xn,Xp) cases*)
+(*Massive chiral Dirac fermion*)
+If[ Xn !=0 && Xn + Xp + Xbi == 0,
+    LagFer = LagFer + Ynp n.p.bi;
+    ];
+(*Vector like Dirac fermion*)
+If[ Xn !=0 && Xn + Xp == 0,
+    LagFer = LagFer + Mnp n.p;
+    ];
+(*** END: Extends LagFer with chiral XXX-charged fermions *****)
 
 
 (* Gauge Sector *)
@@ -146,7 +181,8 @@ If [GaugeU1,
     {{VWB[1],VWB[2]},{VWp,conj[VWp]},ZW}
   };
 ];
-        
+
+
 (* Last safe place to implement code here. Define lists to be used later on *)
 If [EvenSingletScalar,
   EWSBMatterSectorList =
@@ -164,6 +200,25 @@ If [EvenSingletScalar,
      {{{eL}, {conj[eR]}}, {{EL,Ve}, {ER,Ue}}}
     };
 ];
+
+(*** BEGIN: Extends EWSBMatterSectorList with chiral XXX-charged fermions ***)
+If[Xn != 0 && nDG > 1,
+  EWSBMatterSectorList = Join[EWSBMatterSectorList,
+    {
+      {{{nL}, {conj[pR]}}, {{NL,Vn}, {NR,Un}}}
+    };
+   ];
+];
+(*** END: Extends EWSBMatterSectorList with chiral XXX-charged fermions ***)
+
+(*** BEGIN: 4-spinor definitions for XXX-charged chiral fields ***)
+If[Xn != 0,
+      If[nDG > 1,
+      FnList={Fn ->{  NL, conj[NR]}};,
+      FnList={Fn ->{  nL, conj[pR]}};
+      ]
+]
+(*** END: 4-spinor definitions for XXX-charged chiral fields ***)
 
 
 (* WARNING: Avoid code after here *)
@@ -194,6 +249,13 @@ DEFINITION[EWSB][DiracSpinors]={
  Fe ->{  EL, conj[ER]},
  Fu ->{  UL, conj[UR]},
  Fv ->{  vL, 0}};
+
+If[Xn != 0,
+   DEFINITION[EWSB][DiracSpinors]=Join[
+         DEFINITION[EWSB][DiracSpinors],
+         FnList   
+                                      ];
+   ] 
 
 DEFINITION[EWSB][GaugeES]={
  Fd1 ->{  FdL, 0},
