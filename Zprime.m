@@ -37,20 +37,37 @@ Gauge[[3]]={G,  SU[3], color,       g3,False,1};
 Gauge[[4]]={Bp,  U[1], XXX,       g1p, False,1}; (* False as in the official B-L Model *)
 
 
+{Xq,Xl,Xd,Xu,Xe,XH,Xbi}={0, 0, 0, 0, 0, 0, -2};
 
 (* Matter Fields *)
 
 {NS,NF} = {1,1};
 (* Even fermion fields *)
-FermionFields[[NF]] = {q, 3, {uL, dL},     1/6, 2,  3, 0};
+FermionFields[[NF]] = {q, 3, {uL, dL},     1/6, 2,  3};
+If [GaugeU1,
+    FermionFields[[NF]] = Join[FermionFields[[NF]],{Xq}];
+];
 NF = NF + 1;
-FermionFields[[NF]] = {l, 3, {vL, eL},    -1/2, 2,  1, 0};
+FermionFields[[NF]] = {l, 3, {vL, eL},    -1/2, 2,  1};
+If [GaugeU1,
+    FermionFields[[NF]] = Join[FermionFields[[NF]],{Xl}];
+];
 NF = NF + 1;
-FermionFields[[NF]] = {d, 3, conj[dR],     1/3, 1, -3, 0};
+FermionFields[[NF]] = {d, 3, conj[dR],     1/3, 1, -3};
+If [GaugeU1,
+    FermionFields[[NF]] = Join[FermionFields[[NF]],{Xd}];
+];
 NF = NF + 1;
-FermionFields[[NF]] = {u, 3, conj[uR],    -2/3, 1, -3, 0};
+FermionFields[[NF]] = {u, 3, conj[uR],    -2/3, 1, -3};
+If [GaugeU1,
+    FermionFields[[NF]] = Join[FermionFields[[NF]],{Xu}];
+];
 NF = NF + 1;
-FermionFields[[NF]] = {e, 3, conj[eR],       1, 1,  1, 0};
+FermionFields[[NF]] = {e, 3, conj[eR],       1, 1,  1};
+If [GaugeU1,
+    FermionFields[[NF]] = Join[FermionFields[[NF]],{Xe}];
+];
+(* Z2 charges *)
 Do [ 
   FermionFields[[i]] = Join[FermionFields[[i]],{1}];, {i,1,NF}
    ];
