@@ -106,6 +106,7 @@ RealScalars = {S};
 
 (* XXX charges initialization *)
 {Xn,Xp,Xr,Xs,Xt,Xw,Xx,Xy,Xz}={0,0,0,0,0,0,0,0,0};
+{xMajorana,yDirac,yMajorana}={False,False,False};
 
 (******* BEGIN: XXX-charged BSM chiral or vector-like fermion fields *******)
 If[GaugeU1,
@@ -126,6 +127,22 @@ If[GaugeU1,
     FermionFields[[nF]] = {p, nDG, conj[pR], 0, 1,  1, Xp, -1};
   ];
 ];
+
+  (* Single family Dirac Fermion *)
+  If[Xr != 0 && Xs != 0,
+    nF=nF+1;
+    FermionFields[[nF]] = {r, 1, rL,	    0, 1,  1, Xr, -1};
+    nF=nF+1;   
+    FermionFields[[nF]] = {s, 1, conj[sR],   0, 1,  1, Xs, -1};
+  ];
+  (* Single family Dirac Fermion *)
+  If[Xt != 0 && Xw != 0,
+    nF=nF+1;
+    FermionFields[[nF]] = {t, 1, tL,	    0, 1,  1, Xt, -1};
+    nF=nF+1;   
+    FermionFields[[nF]] = {w, 1, conj[wR],   0, 1,  1, Xw, -1};
+  ];
+
 (******* END: XXX-charged BSM chiral or vector-like fermion fields *********)
 
         
