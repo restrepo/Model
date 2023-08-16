@@ -319,7 +319,11 @@ If[Xn != 0,
       FnList={Fn ->{  NL, conj[NR]}};,
       FnList={Fn ->{  nL, conj[pR]}};
       ]
-]
+   ];
+
+If[Xz != 0 && nDM > 1,
+      FzList={Fz ->{  ZL, conj[ZL] }};
+   ];
 (*** END: 4-spinor definitions for XXX-charged chiral fields ***)
 
 
