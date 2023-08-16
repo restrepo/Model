@@ -36,6 +36,26 @@ Gauge[[3]]={G,  SU[3], color,       g3,False,1};
 If [GaugeU1,
     (* name of the charge needs at least 3 characters *)
     Gauge[[4]]={Bp,  U[1], XXX,       g1p, False,1}; (* False as in the official B-L Model *)
+(* Get charges from Module *)
+  anomaly[d_] :=
+  Module[{X, Y, YL, S, NR = -1},
+    S = -2 NR;
+    X = {Xu, Xu, Xu, d, d, d, -Xq, -Xq, -Xq, -Xq, -Xq, -Xq, -Xl, -Xl, 
+      Xe, NR};
+    Y = Simplify[
+      Solve[{2 d + Xu == 1, -Xq + XH + d == 0, -Xq - XH + Xu == 
+        0, -Xl + XH + Xe == 0,
+        Total[X] == 0}, {Xq, Xu, Xl, Xe, XH}]];
+    {XXq, XXu, XXl, XXe, XXH} = {Xq, Xu, Xl, Xe, XH} /. Y[[1]];
+    (*Y=Join[{Xd->d},Y[[1]],{Xbi->S,Xz->NR,nMG->3}];*)
+    YL = {Xq -> XXq, Xl -> XXl, Xu -> -XXu, Xd -> -d, Xe -> -XXe, 
+      XH -> XXH, Xbi -> -S, Xz -> -NR, nMG -> 3};
+    Return[YL]
+    ]
+  (****
+  {Xq, Xl, Xd, Xu, Xe, XH, Xbi} /. anomaly[1/3]
+  {1/3, -1, -(1/3), -(1/3), 1, 0, 2}
+  *****)      
 ];
 
 {Xq,Xl,Xd,Xu,Xe,XH,Xbi}={0, 0, 0, 0, 0, 0, 2};
@@ -110,7 +130,6 @@ RealScalars = {S};
 
 (******* BEGIN: XXX-charged BSM chiral or vector-like fermion fields *******)
 If[GaugeU1,
-  (* TODO: Get charges from Module *)
   (** 
     Anomaly solution: Capital letters may include generations
     {D,i,r,a,c,0,...,m,a,j,o,r,A,n,    A}: 
