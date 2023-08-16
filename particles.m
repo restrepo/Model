@@ -152,6 +152,7 @@ ParticleDefinitions[GaugeES] = {
 	      PDG -> {1000011},
 	      PDG.IX -> {2000011},
               FeynArtsNr -> 12,
+              ElectricCharge -> 0,
               LaTeX -> "{\\chi}^0_r",
               OutputName -> "R"}
       },
@@ -159,6 +160,7 @@ ParticleDefinitions[GaugeES] = {
 	      PDG -> {1000021},
 	      PDG.IX -> {2000021},
               FeynArtsNr -> 13,
+              ElectricCharge -> 0,              
               LaTeX -> "{\\chi}^0_t",
               OutputName -> "T"}
       },
@@ -166,13 +168,15 @@ ParticleDefinitions[GaugeES] = {
 	      PDG -> {1000031},
 	      PDG.IX -> {2000031},
               FeynArtsNr -> 14,
+              ElectricCharge -> 0,              
               LaTeX -> "{\\chi}^0_x",
               OutputName -> "X"}
       },
       {Fz,   { Description -> "Darkinos",
-	      PDG -> {1000051,1000052,1000053},
-	      PDG.IX -> {2000051,2000052,2000053},
-              FeynArtsNr -> 14,
+	      PDG -> {1000051},
+	      PDG.IX -> {2000051},
+              FeynArtsNr -> 15,
+              ElectricCharge -> 0,
               LaTeX -> "{\\chi}^0_x",
               OutputName -> "X"}
        }

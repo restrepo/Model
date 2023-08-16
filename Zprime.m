@@ -137,7 +137,7 @@ If[GaugeU1,
      D->nDG,                   A->nWG, A -> nMG 
      {nDG,nWG,nMG} from config.m
   **)
-  {Xn,Xp,Xr,Xs,Xt,Xw,Xx,Xy,Xz}={1/5,-1/5,0,0,0,0,0,0,0};
+  {Xn,Xp,Xr,Xs,Xt,Xw,Xx,Xy,Xzz}={1/5,-1/5,0,0,0,0,0,0,1};
 
   (* Multi-generation Dirac Fermions -> Fix PDG numbers in particles.m *)
   If[Xn != 0 && Xp != 0,
@@ -220,10 +220,12 @@ If[GaugeU1,
       ];
 
 (******* END: XXX-charged BSM chiral or vector-like fermion fields *********)
-
+nF=nF+1;
+nMG = 1;
+FermionFields[[nF]]  = {z, nMG, zL,	    0, 1,  1, Xzz, -1};
         
 (*----------------------------------------------*)
-(*   DEFINITION                                 *)
+(*          DEFINITION                          *)
 (*----------------------------------------------*)
 
 NameOfStates={GaugeES, EWSB};
@@ -280,6 +282,7 @@ If[ xMajorana && 2 Xx + Xbi == 0,
 If[ Xz !=0 && 2*Xz  + Xbi == 0,
  LagFer = LagFer +  Yz z.z.bi;
 ];
+LagFer = LagFer +  Yz z.z.bi;
 
 (*** END: Extends LagFer with chiral XXX-charged fermions *****)
 
@@ -374,7 +377,9 @@ DEFINITION[EWSB][DiracSpinors]={
  Fd ->{  DL, conj[DR]},
  Fe ->{  EL, conj[ER]},
  Fu ->{  UL, conj[UR]},
- Fv ->{  vL, 0}};
+ Fv ->{  vL, 0},
+ Fz ->{  zL, 0}
+ };
 
 If[Xn != 0,
    DEFINITION[EWSB][DiracSpinors]=Join[
