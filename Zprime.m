@@ -239,6 +239,28 @@ If[ Xn !=0 && Xn + Xp + Xbi == 0,
 If[ Xn !=0 && Xn + Xp == 0,
     LagFer = LagFer + Mnp n.p;
     ];
+
+If[ Xr !=0 && Xr + Xs - Xbi == 0,
+    LagFer = LagFer + Yrs r.s.conj[bi];
+    ];
+If[ Xt !=0 && Xt + Xw - Xbi == 0,
+    LagFer = LagFer + Ytv t.w.conj[bi];
+    ];
+
+If[ yDirac && Xx + Xy + Xbi == 0,
+ LagFer = LagFer +  Yxy x.y.bi;
+];
+If[ yMajorana && 2 Xy + Xbi == 0,
+ LagFer = LagFer +  Yxy y.y.bi;
+];
+If[ xMajorana && 2 Xx + Xbi == 0,
+ LagFer = LagFer +  Yxy x.x.bi;
+];
+
+If[ Xz !=0 && 2*Xz  + Xbi == 0,
+ LagFer = LagFer +  Yz z.z.bi;
+];
+
 (*** END: Extends LagFer with chiral XXX-charged fermions *****)
 
 
@@ -279,9 +301,16 @@ If[Xn != 0 && nDG > 1,
   EWSBMatterSectorList = Join[EWSBMatterSectorList,
     {
       {{{nL}, {conj[pR]}}, {{NL,Vn}, {NR,Un}}}
-    };
+    }
    ];
 ];
+If[Xz != 0 && nMG > 1,
+   EWSBMatterSectorList = Join[EWSBMatterSectorList,,
+      {
+	      {{zL},{ZL, Uz}}	 
+      }
+				       ];
+ ];
 (*** END: Extends EWSBMatterSectorList with chiral XXX-charged fermions ***)
 
 (*** BEGIN: 4-spinor definitions for XXX-charged chiral fields ***)
