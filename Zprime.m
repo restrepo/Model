@@ -361,7 +361,15 @@ If[Xn != 0,
          DEFINITION[EWSB][DiracSpinors],
          FnList   
                                       ];
-   ] 
+   ]; 
+
+If[Xz != 0,
+   DEFINITION[EWSB][DiracSpinors]=Join[
+         DEFINITION[EWSB][DiracSpinors],
+         FzList   
+                                      ];
+   ]; 
+
 
 DEFINITION[EWSB][GaugeES]={
  Fd1 ->{  FdL, 0},
