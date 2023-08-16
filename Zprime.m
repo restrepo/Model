@@ -58,7 +58,8 @@ If [GaugeU1,
   *****)      
 ];
 
-{Xq,Xl,Xd,Xu,Xe,XH,Xbi}={0, 0, 0, 0, 0, 0, 2};
+(*{Xq,Xl,Xd,Xu,Xe,XH,Xbi}={0, 0, 0, 0, 0, 0, 2};*)
+{Xq,Xl,Xd,Xu,Xe,XH,Xbi}={1/3, -1, -(1/3), -(1/3), 1, 0, -2}
 
 (* Matter Fields *)
 
