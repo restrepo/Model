@@ -320,11 +320,13 @@ If [EvenSingletScalar,
       {{{uL}, {conj[uR]}}, {{UL,Vu}, {UR,Uu}}},
       {{{eL}, {conj[eR]}}, {{EL,Ve}, {ER,Ue}}}
     };
-    EWSBMatterSectorList = Join[EWSBMatterSectorList,
+    If [seesaw,
+      EWSBMatterSectorList = Join[EWSBMatterSectorList,
         {
           {{vL,conj[zR]}, {VL,ZM}}
         }
-    ]; 
+          ]; 
+       ];
   ,
   EWSBMatterSectorList =
   {
