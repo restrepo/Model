@@ -217,7 +217,7 @@ If[GaugeU1,
   If[Xzz != 0,
     nF=nF+1;
     If [seesaw,
-        If [Xl+Xzz!=0,
+        If [Xl + XH + Xzz != 0,
             Print["ERROR: seesaw mechanism not implemented for Xzz and Xl with different charges"];
             Exit[];
         ];
@@ -284,7 +284,7 @@ If[ xMajorana && 2 Xx + Xbi == 0,
  LagFer = LagFer +  Yxy x.x.bi;
 ];
 
-If[ Xzz !=0 && 2*Xz + Xbi == 0,
+If[ Xzz !=0 && 2*Xzz + Xbi == 0,
  LagFer = LagFer +  Yz z.z.bi;
 ];
 If[ Xzz !=0 && Xl + XH + Xzz == 0,
