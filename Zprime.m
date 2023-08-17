@@ -214,15 +214,20 @@ If[GaugeU1,
     ];
   (************** END CASES *******************************)
   (*TODO: If SM Dirac Yukawa redefines the mixing nad 4-spinor*)
-  If[Xz != 0,
+  If[Xzz != 0,
     nF=nF+1;
-    FermionFields[[nF]]  = {z, nMG, zL,	    0, 1,  1, Xz, -1}; (* try conj[zR] if errors *)
+    If [seesaw,
+        If [Xl+Xzz!=0,
+            Print["ERROR: seesaw mechanism not implemented for Xzz and Xl with different charges"];
+            Exit[];
+        ];
+        FermionFields[[nF]]  = {z, nMG, conj[zR],	    0, 1,  1, Xzz, 1};,
+        FermionFields[[nF]]  = {z, nMG, zL,	    0, 1,  1, Xz, -1}; (* try conj[zR] if errors *)
       ];
-
+    ];
+  
 (******* END: XXX-charged BSM chiral or vector-like fermion fields *********)
-nF=nF+1;
-nMG = 3;
-FermionFields[[nF]]  = {z, nMG, conj[zR],	    0, 1,  1, Xzz, 1};
+
         
 (*----------------------------------------------*)
 (*          DEFINITION                          *)
