@@ -364,7 +364,7 @@ If[Xn != 0,
 If[Xzz != 0 && nDM > 1 && !seesaw,
       FzList={Fz ->{  ZL, conj[ZL] }};
    ];
-   
+
 If [seesaw,
     FvList={Fv->{  VL, conj[VL]}};,
     FvList={Fv->{  vL, 0}};
@@ -419,7 +419,7 @@ If[Xn != 0,
                                       ];
    ]; 
 
-If[Xz != 0,
+If[Xzz != 0 && !seesaw,
    DEFINITION[EWSB][DiracSpinors]=Join[
          DEFINITION[EWSB][DiracSpinors],
          FzList   
