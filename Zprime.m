@@ -344,7 +344,7 @@ If[Xn != 0 && nDG > 1,
     }
    ];
 ];
-If[Xz != 0 && nMG > 1,
+If[Xzz != 0 && nMG > 1 && !seesaw,
    EWSBMatterSectorList = Join[EWSBMatterSectorList,,
       {
 	      {{zL},{ZL, Uz}}	 
