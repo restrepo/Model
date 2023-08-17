@@ -137,7 +137,7 @@ If[GaugeU1,
      D->nDG,                   A->nWG, A -> nMG 
      {nDG,nWG,nMG} from config.m
   **)
-  {Xn,Xp,Xr,Xs,Xt,Xw,Xx,Xy,Xzz}={1/5,-1/5,0,0,0,0,0,0,1};
+  {Xn,Xp,Xr,Xs,Xt,Xw,Xx,Xy,Xz}={1/5,-1/5,0,0,0,0,0,0,1};
 
   (* Multi-generation Dirac Fermions -> Fix PDG numbers in particles.m *)
   If[Xn != 0 && Xp != 0,
@@ -214,14 +214,14 @@ If[GaugeU1,
     ];
   (************** END CASES *******************************)
   (*TODO: If SM Dirac Yukawa redefines the mixing nad 4-spinor*)
-  If[Xzz != 0,
+  If[Xz != 0,
     nF=nF+1;
     If [seesaw,
-        If [Xl + XH + Xzz != 0,
-            Print["ERROR: seesaw mechanism not implemented for Xzz and Xl with different charges"];
+        If [Xl + XH + Xz != 0,
+            Print["ERROR: seesaw mechanism not implemented for Xz and Xl with different charges"];
             Exit[];
         ];
-        FermionFields[[nF]]  = {z, nMG, conj[zR],	    0, 1,  1, Xzz, 1};,
+        FermionFields[[nF]]  = {z, nMG, conj[zR],	    0, 1,  1, Xz, 1};,
         FermionFields[[nF]]  = {z, nMG, zL,	    0, 1,  1, Xz, -1}; (* try conj[zR] if errors *)
       ];
     ];
@@ -284,14 +284,12 @@ If[ xMajorana && 2 Xx + Xbi == 0,
  LagFer = LagFer +  Yxy x.x.bi;
 ];
 
-If[ Xzz !=0 && 2*Xzz + Xbi == 0,
+If[ Xz !=0 && 2*Xz + Xbi == 0,
  LagFer = LagFer +  Yz z.z.bi;
 ];
-If[ Xzz !=0 && Xl + XH + Xzz == 0,
+If[ Xz !=0 && Xl + XH + Xz == 0,
  LagFer = LagFer +  Yv H.l.z;
 ];
-
-LagFer = LagFer + + Yz z.z.bi;
 
 (*** END: Extends LagFer with chiral XXX-charged fermions *****)
 
@@ -344,7 +342,7 @@ If[Xn != 0 && nDG > 1,
     }
    ];
 ];
-If[Xzz != 0 && nMG > 1 && !seesaw,
+If[Xz != 0 && nMG > 1 && !seesaw,
    EWSBMatterSectorList = Join[EWSBMatterSectorList,,
       {
 	      {{zL},{ZL, Uz}}	 
@@ -361,7 +359,7 @@ If[Xn != 0,
       ]
    ];
 
-If[Xzz != 0 && nDM > 1 && !seesaw,
+If[Xz != 0 && nDM > 1 && !seesaw,
       FzList={Fz ->{  ZL, conj[ZL] }};
    ];
 
@@ -419,7 +417,7 @@ If[Xn != 0,
                                       ];
    ]; 
 
-If[Xzz != 0 && !seesaw,
+If[Xz != 0 && !seesaw,
    DEFINITION[EWSB][DiracSpinors]=Join[
          DEFINITION[EWSB][DiracSpinors],
          FzList   
