@@ -312,15 +312,20 @@ If [GaugeU1,
 
 (* Last safe place to implement code here. Define lists to be used later on *)
 If [EvenSingletScalar,
-  EWSBMatterSectorList =
-  {
-     {{phiH,phiB},{hh,ZH}},
-     {{sigmaH,sigmaB},{Ah,ZA}},
-     {{{dL}, {conj[dR]}}, {{DL,Vd}, {DR,Ud}}},
-     {{{uL}, {conj[uR]}}, {{UL,Vu}, {UR,Uu}}},
-     {{{eL}, {conj[eR]}}, {{EL,Ve}, {ER,Ue}}},
-     {{vL,conj[zR]}, {VL,ZM}}
-  };,
+    EWSBMatterSectorList =
+    {
+      {{phiH,phiB},{hh,ZH}},
+      {{sigmaH,sigmaB},{Ah,ZA}},
+      {{{dL}, {conj[dR]}}, {{DL,Vd}, {DR,Ud}}},
+      {{{uL}, {conj[uR]}}, {{UL,Vu}, {UR,Uu}}},
+      {{{eL}, {conj[eR]}}, {{EL,Ve}, {ER,Ue}}}
+    };
+    EWSBMatterSectorList = Join[EWSBMatterSectorList,
+        {
+          {{vL,conj[zR]}, {VL,ZM}}
+        }
+    ]; 
+  ,
   EWSBMatterSectorList =
   {
      {{{dL}, {conj[dR]}}, {{DL,Vd}, {DR,Ud}}},
