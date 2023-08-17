@@ -222,7 +222,7 @@ If[GaugeU1,
 (******* END: XXX-charged BSM chiral or vector-like fermion fields *********)
 nF=nF+1;
 nMG = 3;
-FermionFields[[nF]]  = {z, nMG, zL,	    0, 1,  1, Xzz, 1};
+FermionFields[[nF]]  = {z, nMG, conj[zR],	    0, 1,  1, Xzz, 1};
         
 (*----------------------------------------------*)
 (*          DEFINITION                          *)
@@ -309,8 +309,9 @@ If [EvenSingletScalar,
      {{sigmaH,sigmaB},{Ah,ZA}},
      {{{dL}, {conj[dR]}}, {{DL,Vd}, {DR,Ud}}},
      {{{uL}, {conj[uR]}}, {{UL,Vu}, {UR,Uu}}},
-     {{{eL}, {conj[eR]}}, {{EL,Ve}, {ER,Ue}}}
-    };,
+     {{{eL}, {conj[eR]}}, {{EL,Ve}, {ER,Ue}}},
+     {{vL,conj[zR]}, {VL,ZM}}
+  };,
   EWSBMatterSectorList =
   {
      {{{dL}, {conj[dR]}}, {{DL,Vd}, {DR,Ud}}},
@@ -377,8 +378,7 @@ DEFINITION[EWSB][DiracSpinors]={
  Fd ->{  DL, conj[DR]},
  Fe ->{  EL, conj[ER]},
  Fu ->{  UL, conj[UR]},
- Fv ->{  vL, 0},
- Fz ->{  zL, 0}
+ Fv ->{  VL, conj[VL]}
  };
 
 If[Xn != 0,

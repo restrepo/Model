@@ -148,7 +148,9 @@ ZZlist,
 
 {MS2,       {Description -> "Softbreaking Up-Higgs Mass",
              LaTeX -> "M_S^2",
-	     OutputName-> MS2}}, 
+	     OutputName-> MS2}},
+
+{ZM,	    {Description -> "Neutrino-Mixing-Matrix"}},           
 
 Lambda1list,
 

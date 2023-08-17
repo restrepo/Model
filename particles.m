@@ -137,7 +137,9 @@ ParticleDefinitions[GaugeES] = {
       {Fd,   { Description -> "Down-Quarks"}},   
       {Fu,   { Description -> "Up-Quarks"}},   
       {Fe,   { Description -> "Leptons" }},
-      {Fv,   { Description -> "Neutrinos" }},
+      {Fv,   { Description -> "Neutrinos",
+      			PDG ->{12,14,16,8810012,8810014,8810016}
+       }},
       {Fn,   { Description -> "Darkinos",
 	      PDG -> {1000001},
 	      PDG.IX -> {2000001},
