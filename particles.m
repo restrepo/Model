@@ -44,6 +44,17 @@ If [GaugeU1,
         gZplist={gZp,    { LaTeX -> "None" }};                  
      ];
 
+     If [seesaw,
+         FvList =       {Fv,   { Description -> "Neutrinos",
+      			PDG ->{12,14,16,8810012,8810014,8810016}
+                               }
+                        };,
+        FvList =       {Fv,   { Description -> "Neutrinos"}
+                       };
+     ]
+
+     
+
 
 
 ParticleDefinitions[GaugeES] = {
@@ -137,9 +148,7 @@ ParticleDefinitions[GaugeES] = {
       {Fd,   { Description -> "Down-Quarks"}},   
       {Fu,   { Description -> "Up-Quarks"}},   
       {Fe,   { Description -> "Leptons" }},
-      {Fv,   { Description -> "Neutrinos",
-      			PDG ->{12,14,16,8810012,8810014,8810016}
-       }},
+      FvList,
       {Fn,   { Description -> "Darkinos",
 	      PDG -> {1000001},
 	      PDG.IX -> {2000001},
