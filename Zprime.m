@@ -221,7 +221,7 @@ If[GaugeU1,
 
 (******* END: XXX-charged BSM chiral or vector-like fermion fields *********)
 nF=nF+1;
-nMG = 1;
+nMG = 3;
 FermionFields[[nF]]  = {z, nMG, zL,	    0, 1,  1, Xzz, 1};
         
 (*----------------------------------------------*)

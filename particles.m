@@ -173,8 +173,8 @@ ParticleDefinitions[GaugeES] = {
               OutputName -> "X"}
       },
       {Fz,   { Description -> "Darkinos",
-	      PDG -> {1000051},
-	      PDG.IX -> {2000051},
+	      PDG -> {1000051,1000052,1000053},
+	      PDG.IX -> {2000051,2000052,2000053},
               FeynArtsNr -> 15,
               ElectricCharge -> 0,
               LaTeX -> "{\\chi}^0_x",
