@@ -284,10 +284,14 @@ If[ xMajorana && 2 Xx + Xbi == 0,
  LagFer = LagFer +  Yxy x.x.bi;
 ];
 
-If[ Xz !=0 && 2*Xz  + Xbi == 0,
+If[ Xzz !=0 && 2*Xz + Xbi == 0,
  LagFer = LagFer +  Yz z.z.bi;
 ];
-LagFer = LagFer + Yv H.l.z + Yz z.z.bi;
+If[ Xzz !=0 && Xl + XH + Xzz == 0,
+ LagFer = LagFer +  Yv H.l.z;
+];
+
+LagFer = LagFer + + Yz z.z.bi;
 
 (*** END: Extends LagFer with chiral XXX-charged fermions *****)
 
