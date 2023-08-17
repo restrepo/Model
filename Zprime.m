@@ -364,8 +364,19 @@ If[Xn != 0,
 If[Xzz != 0 && nDM > 1 && !seesaw,
       FzList={Fz ->{  ZL, conj[ZL] }};
    ];
+   
+If [seesaw,
+    FvList={Fv->{  VL, conj[VL]}};,
+    FvList={Fv->{  vL, 0}};
+    ];
+
 (*** END: 4-spinor definitions for XXX-charged chiral fields ***)
 
+
+
+(*------------------------------------------------------*)
+(* Superpotential *)
+(*------------------------------------------------------*)
 
 (* WARNING: Avoid code after here *)
 
@@ -393,9 +404,13 @@ DEFINITION[EWSB][MatterSector] = EWSBMatterSectorList;
 DEFINITION[EWSB][DiracSpinors]={
  Fd ->{  DL, conj[DR]},
  Fe ->{  EL, conj[ER]},
- Fu ->{  UL, conj[UR]},
- Fv ->{  VL, conj[VL]}
+ Fu ->{  UL, conj[UR]}
  };
+
+DEFINITION[EWSB][DiracSpinors]=Join[
+         DEFINITION[EWSB][DiracSpinors],
+         FvList   
+                                    ];
 
 If[Xn != 0,
    DEFINITION[EWSB][DiracSpinors]=Join[
