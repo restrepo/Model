@@ -361,7 +361,7 @@ If[Xn != 0,
       ]
    ];
 
-If[Xz != 0 && nDM > 1,
+If[Xzz != 0 && nDM > 1 && !seesaw,
       FzList={Fz ->{  ZL, conj[ZL] }};
    ];
 (*** END: 4-spinor definitions for XXX-charged chiral fields ***)
