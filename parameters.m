@@ -102,6 +102,10 @@ ZZlist,
       LaTeX -> "Y_{z}",
       LesHouches -> YZ }},
 
+{Yv, {OutputName -> Yv,
+      LaTeX -> "Y_\\nu",
+      LesHouches -> Yv}},      
+
 {Mnp, {OutputName -> Mnp,
       LaTeX -> "M_{np}",
       LesHouches -> MNP }},
