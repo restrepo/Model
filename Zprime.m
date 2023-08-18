@@ -29,8 +29,6 @@ Global[[1]] = {Z[2], Z2};
 
 
 (* Gauge Groups *)
-(*Initialize Abelian Charges*)
-{Xq,Xl,Xd,Xu,Xe,XH,Xbi}={0, 0, 0, 0, 0, 0, 0};
 
 Gauge[[1]]={B,   U[1], hypercharge, g1,False,1};
 Gauge[[2]]={WB, SU[2], left,        g2,True,1};
@@ -57,11 +55,13 @@ anomaly[d_] := Module[{X, Y, YL, S, NR = -1},
     ];
   (****
   {Xq, Xl, Xd, Xu, Xe, XH, Xbi} /. anomaly[1/3]
-  {1/3, -1, -(1/3), -(1/3), 1, 0, 2}
+  {1/3, -1, -(1/3), -(1/3), 1, 0, -2}
   *****)
 
 If [GaugeU1,
-  {Xq,Xl,Xd,Xu,Xe,XH,Xbi}={1/3, -1, -(1/3), -(1/3), 1, 0, -2};
+  {Xq,Xl,Xd,Xu,Xe,XH,Xbi}={Xq, Xl, Xd, Xu, Xe, XH, Xbi} /. anomaly[1/3];,
+  (*Initialize Abelian Charges*)
+  {Xq,Xl,Xd,Xu,Xe,XH,Xbi}={0, 0, 0, 0, 0, 0, 0};
 ];
 
 Print["{Xq,Xl,Xd,Xu,Xe,XH,Xbi} = ",{Xq,Xl,Xd,Xu,Xe,XH,Xbi}]
