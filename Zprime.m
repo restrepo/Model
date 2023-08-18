@@ -117,19 +117,20 @@ Do [
   ScalarFields[[i]] = Join[ScalarFields[[i]],{1}];, {i,1,NS}
    ];
 
-(* Odd neutral scalar fields*)
-NS = NS + 1;
-NSO = NS;
-ScalarFields[[NS]] =  {S, 1, ss,     0, 1,  1};
-If [GaugeU1,
-    ScalarFields[[NS]] = Join[ScalarFields[[NS]],{0}];
+If [SSDM,
+  (* Odd neutral scalar fields*)
+  NS = NS + 1;
+  NSO = NS;
+  ScalarFields[[NS]] =  {S, 1, ss,     0, 1,  1};
+  If [GaugeU1,
+      ScalarFields[[NS]] = Join[ScalarFields[[NS]],{0}];
+  ];
+  Do [ 
+    ScalarFields[[i]] = Join[ScalarFields[[i]],{-1}];, {i,NSO,NS}
+     ];
+  
+  RealScalars = {S};
 ];
-Do [ 
-  ScalarFields[[i]] = Join[ScalarFields[[i]],{-1}];, {i,NSO,NS}
-   ];
-
-RealScalars = {S};
-
 
 
 
