@@ -144,95 +144,93 @@ If[GaugeU1,
      D->nDG,                   A->nWG, A -> nMG 
      {nDG,nWG,nMG} from config.m
   **)
-  {Xn,Xp,Xr,Xs,Xt,Xw,Xx,Xy,Xz}={1/5,-1/5,0,0,0,0,0,0,1};
-
-  (* Multi-generation Dirac Fermions -> Fix PDG numbers in particles.m *)
-  If[Xn != 0 && Xp != 0,
-    nF=nF+1;
-    FermionFields[[nF]] = {n, nDG, nL,	    0, 1,  1, Xn, -1};
-    nF=nF+1;
-    FermionFields[[nF]] = {p, nDG, conj[pR], 0, 1,  1, Xp, -1};
-  ];
+  {Xn,Xp,Xr,Xs,Xt,Xw,Xx,Xy,Xz}={1/5,-1/5,0,0,0,0,0,0,1};  
 ];
 
-  (* Single family Dirac Fermion *)
-  If[Xr != 0 && Xs != 0,
-    nF=nF+1;
-    FermionFields[[nF]] = {r, 1, rL,	    0, 1,  1, Xr, -1};
-    nF=nF+1;   
-    FermionFields[[nF]] = {s, 1, conj[sR],   0, 1,  1, Xs, -1};
+(* Multi-generation Dirac Fermions -> Fix PDG numbers in particles.m *)
+If[Xn != 0 && Xp != 0,
+  nF=nF+1;
+  FermionFields[[nF]] = {n, nDG, nL,	    0, 1,  1, Xn, -1};
+  nF=nF+1;
+  FermionFields[[nF]] = {p, nDG, conj[pR], 0, 1,  1, Xp, -1};
+];
+
+
+(* Single family Dirac Fermion *)
+If[Xr != 0 && Xs != 0,
+  nF=nF+1;
+  FermionFields[[nF]] = {r, 1, rL,	    0, 1,  1, Xr, -1};
+  nF=nF+1;   
+  FermionFields[[nF]] = {s, 1, conj[sR],   0, 1,  1, Xs, -1};
+];
+(* Single family Dirac Fermion *)
+If[Xt != 0 && Xw != 0,
+  nF=nF+1;
+  FermionFields[[nF]] = {t, 1, tL,	    0, 1,  1, Xt, -1};
+  nF=nF+1;   
+  FermionFields[[nF]] = {w, 1, conj[wR],   0, 1,  1, Xw, -1};
+];
+
+(* (Xx,Xy) pair cases *)
+(************** BEGIN CASES *****************************)
+(* Cases: [1,-1]; [1,1] or [-1,-1] (S=2); [1,3] or [-1,-3] (S=4); [1,3] (S=6); [1,0] (S=2)   *)
+If[Xx != 0 || Xy != 0,
+  xMajorana = False;
+  yDirac = False;
+  yMajorana = False;
+  If [
+        Xx + Xy == 0, (*vector-like*)
+            yDirac = True;,
+        If [ (*non vector-like*)
+              Abs[Xx + Xy] == Abs[Xbi], (*Massive chiral*)
+              If[ (*chiral*)
+                  Xx != Xy,
+                    yDirac = True;,
+                    yMajorana = True;
+                  ],
+                  (*massles Dirac*)
+                  If [
+                        Abs[2 Xy] == Abs[Xbi],
+                          yMajorana = True;,
+                        If [
+                              Abs[2 Xx] == Abs[Xbi],
+                                xMajorana = True;
+                          ]                           
+                    ]             
+            ]
+      ]
+  ]
+(* Cases implementation *)
+If[Xx != 0 && Xy != 0 && yDirac,
+  nF=nF+1;
+  FermionFields[[nF]] = {x, 1, tL,	    0, 1,  1, Xx, -1};
+  nF=nF+1;   
+  FermionFields[[nF]] = {y, 1, conj[yR],   0, 1,  1, Xy, -1};
+];
+(* Multi-generation Weyl Fermion -> Fix PDG numbers in particles.m (Dirac neutrinos) *)
+If[Xx != 0 && (!yDirac && !yMajorana && !xMajorana),
+  nF=nF+1;
+  FermionFields[[nF]]  = {x, nWG, xL,	    0, 1,  1, Xx, -1};
   ];
-  (* Single family Dirac Fermion *)
-  If[Xt != 0 && Xw != 0,
-    nF=nF+1;
-    FermionFields[[nF]] = {t, 1, tL,	    0, 1,  1, Xt, -1};
-    nF=nF+1;   
-    FermionFields[[nF]] = {w, 1, conj[wR],   0, 1,  1, Xw, -1};
+(* Single Majorana Fermion *)
+If[Xy != 0 && xMajorana,
+  nF=nF+1;
+  FermionFields[[nF]]  = {y, 1, yL,	    0, 1,  1, Xy, -1}; (* try conj[yR] if errors *)
   ];
-
-  (* (Xx,Xy) pair cases *)
-  (************** BEGIN CASES *****************************)
-  (* Cases: [1,-1]; [1,1] or [-1,-1] (S=2); [1,3] or [-1,-3] (S=4); [1,3] (S=6); [1,0] (S=2)   *)
-  If[Xx != 0 || Xy != 0,
-    xMajorana = False;
-    yDirac = False;
-    yMajorana = False;
-
-    If [
-          Xx + Xy == 0, (*vector-like*)
-              yDirac = True;,
-          If [ (*non vector-like*)
-                Abs[Xx + Xy] == Abs[Xbi], (*Massive chiral*)
-                If[ (*chiral*)
-                    Xx != Xy,
-                      yDirac = True;,
-                      yMajorana = True;
-                    ],
-                    (*massles Dirac*)
-                    If [
-                          Abs[2 Xy] == Abs[Xbi],
-                            yMajorana = True;,
-                          If [
-                                Abs[2 Xx] == Abs[Xbi],
-                                  xMajorana = True;
-                            ]                           
-                      ]             
-              ]
-        ]
-    ]
-  (* Cases implementation *)
-  If[Xx != 0 && Xy != 0 && yDirac,
-    nF=nF+1;
-    FermionFields[[nF]] = {x, 1, tL,	    0, 1,  1, Xx, -1};
-    nF=nF+1;   
-    FermionFields[[nF]] = {y, 1, conj[yR],   0, 1,  1, Xy, -1};
-  ];
-
-  (* Multi-generation Weyl Fermion -> Fix PDG numbers in particles.m (Dirac neutrinos) *)
-  If[Xx != 0 && (!yDirac && !yMajorana && !xMajorana),
-    nF=nF+1;
-    FermionFields[[nF]]  = {x, nWG, xL,	    0, 1,  1, Xx, -1};
-    ];
-
-  (* Single Majorana Fermion *)
-  If[Xy != 0 && xMajorana,
-    nF=nF+1;
-    FermionFields[[nF]]  = {y, 1, yL,	    0, 1,  1, Xy, -1}; (* try conj[yR] if errors *)
-    ];
-  (************** END CASES *******************************)
-  (*TODO: If SM Dirac Yukawa redefines the mixing nad 4-spinor*)
-  If[Xz != 0,
-    nF=nF+1;
-    If [seesaw,
-        If [Xl + XH + Xz != 0,
-            Print["Xl = ",Xl,", XH = ",XH,", Xz = ",Xz];
-            Print["ERROR: seesaw mechanism not implemented for Xz and Xl with different charges"];
-            Exit[];
-        ];
-        FermionFields[[nF]]  = {z, nMG, conj[zR],	    0, 1,  1, Xz, 1};,
-        FermionFields[[nF]]  = {z, nMG, zL,	    0, 1,  1, Xz, -1}; (* try conj[zR] if errors *)
+(************** END CASES *******************************)
+(*TODO: If SM Dirac Yukawa redefines the mixing nad 4-spinor*)
+If[Xz != 0,
+  nF=nF+1;
+  If [seesaw,
+      If [Xl + XH + Xz != 0,
+          Print["Xl = ",Xl,", XH = ",XH,", Xz = ",Xz];
+          Print["ERROR: seesaw mechanism not implemented for Xz and Xl with different charges"];
+          Exit[];
       ];
+      FermionFields[[nF]]  = {z, nMG, conj[zR],	    0, 1,  1, Xz, 1};,
+      FermionFields[[nF]]  = {z, nMG, zL,	    0, 1,  1, Xz, -1}; (* try conj[zR] if errors *)
     ];
+  ];
   
 (******* END: XXX-charged BSM chiral or vector-like fermion fields *********)
 
