@@ -283,13 +283,13 @@ If[ Xt !=0 && Xt + Xw - Xbi == 0,
     LagFer = LagFer + Ytv t.w.conj[bi];
     ];
 
-If[ yDirac && Xx + Xy + Xbi == 0,
+If[Xx != 0 && yDirac && Xx + Xy + Xbi == 0,
  LagFer = LagFer +  Yxy x.y.bi;
 ];
-If[ yMajorana && 2 Xy + Xbi == 0,
+If[Xy != 0 && yMajorana && 2 Xy + Xbi == 0,
  LagFer = LagFer +  Yxy y.y.bi;
 ];
-If[ xMajorana && 2 Xx + Xbi == 0,
+If[Xx !=0 && xMajorana && 2 Xx + Xbi == 0,
  LagFer = LagFer +  Yxy x.x.bi;
 ];
 
