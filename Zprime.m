@@ -60,8 +60,9 @@ anomaly[d_] := Module[{X, Y, YL, S, NR = -1},
   {1/3, -1, -(1/3), -(1/3), 1, 0, 2}
   *****)
 
-
-{Xq,Xl,Xd,Xu,Xe,XH,Xbi}={1/3, -1, -(1/3), -(1/3), 1, 0, -2};
+If [GaugeU1,
+  {Xq,Xl,Xd,Xu,Xe,XH,Xbi}={1/3, -1, -(1/3), -(1/3), 1, 0, -2};
+];
 
 Print["{Xq,Xl,Xd,Xu,Xe,XH,Xbi} = ",{Xq,Xl,Xd,Xu,Xe,XH,Xbi}]
 
