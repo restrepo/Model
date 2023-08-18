@@ -28,7 +28,8 @@ Global[[1]] = {Z[2], Z2};
 
 
 (* Gauge Groups *)
-
+(*Initialize Abelian Charges*)
+{Xq,Xl,Xd,Xu,Xe,XH,Xbi}={0, 0, 0, 0, 0, 0, 2};
 
 Gauge[[1]]={B,   U[1], hypercharge, g1,False,1};
 Gauge[[2]]={WB, SU[2], left,        g2,True,1};
@@ -58,7 +59,6 @@ If [GaugeU1,
   *****)      
 ];
 
-(*{Xq,Xl,Xd,Xu,Xe,XH,Xbi}={0, 0, 0, 0, 0, 0, 2};*)
 {Xq,Xl,Xd,Xu,Xe,XH,Xbi}={1/3, -1, -(1/3), -(1/3), 1, 0, -2}
 
 (* Matter Fields *)
