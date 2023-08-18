@@ -8,7 +8,8 @@ Model`Date = "2015-11-16";
 Get[FileNameJoin[{$sarahDir,"Models",Model`Name,"config.m"}]];
 (* Adjust configuration variables *)
 If [GaugeU1,
-    EvenSingletScalar = True;
+    EvenSingletScalar = True;,
+    seesaw = False;
 ];
 
 (* 2013-01-24: changed normalization of lambda term to convention of hep-ph/0207271 *)
@@ -29,7 +30,7 @@ Global[[1]] = {Z[2], Z2};
 
 (* Gauge Groups *)
 (*Initialize Abelian Charges*)
-{Xq,Xl,Xd,Xu,Xe,XH,Xbi}={0, 0, 0, 0, 0, 0, 2};
+{Xq,Xl,Xd,Xu,Xe,XH,Xbi}={0, 0, 0, 0, 0, 0, 0};
 
 Gauge[[1]]={B,   U[1], hypercharge, g1,False,1};
 Gauge[[2]]={WB, SU[2], left,        g2,True,1};
@@ -37,9 +38,10 @@ Gauge[[3]]={G,  SU[3], color,       g3,False,1};
 If [GaugeU1,
     (* name of the charge needs at least 3 characters *)
     Gauge[[4]]={Bp,  U[1], XXX,       g1p, False,1}; (* False as in the official B-L Model *)
+];
+
 (* Get charges from Module *)
-  anomaly[d_] :=
-  Module[{X, Y, YL, S, NR = -1},
+anomaly[d_] := Module[{X, Y, YL, S, NR = -1},
     S = -2 NR;
     X = {Xu, Xu, Xu, d, d, d, -Xq, -Xq, -Xq, -Xq, -Xq, -Xq, -Xl, -Xl, 
       Xe, NR};
@@ -52,14 +54,16 @@ If [GaugeU1,
     YL = {Xq -> XXq, Xl -> XXl, Xu -> -XXu, Xd -> -d, Xe -> -XXe, 
       XH -> XXH, Xbi -> -S, Xz -> -NR, nMG -> 3};
     Return[YL]
-    ]
+    ];
   (****
   {Xq, Xl, Xd, Xu, Xe, XH, Xbi} /. anomaly[1/3]
   {1/3, -1, -(1/3), -(1/3), 1, 0, 2}
-  *****)      
-];
+  *****)
 
-{Xq,Xl,Xd,Xu,Xe,XH,Xbi}={1/3, -1, -(1/3), -(1/3), 1, 0, -2}
+
+{Xq,Xl,Xd,Xu,Xe,XH,Xbi}={1/3, -1, -(1/3), -(1/3), 1, 0, -2};
+
+Print["{Xq,Xl,Xd,Xu,Xe,XH,Xbi} = ",{Xq,Xl,Xd,Xu,Xe,XH,Xbi}]
 
 (* Matter Fields *)
 
@@ -124,6 +128,9 @@ Do [
    ];
 
 RealScalars = {S};
+
+
+
 
 (* XXX charges initialization *)
 {Xn,Xp,Xr,Xs,Xt,Xw,Xx,Xy,Xz}={0,0,0,0,0,0,0,0,0};
@@ -218,6 +225,7 @@ If[GaugeU1,
     nF=nF+1;
     If [seesaw,
         If [Xl + XH + Xz != 0,
+            Print["Xl = ",Xl,", XH = ",XH,", Xz = ",Xz];
             Print["ERROR: seesaw mechanism not implemented for Xz and Xl with different charges"];
             Exit[];
         ];
@@ -228,7 +236,8 @@ If[GaugeU1,
   
 (******* END: XXX-charged BSM chiral or vector-like fermion fields *********)
 
-        
+
+
 (*----------------------------------------------*)
 (*          DEFINITION                          *)
 (*----------------------------------------------*)

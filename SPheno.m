@@ -1,8 +1,10 @@
 (*Reads configuration file in both unix and windows*)
 Get[FileNameJoin[{$sarahDir,"Models",Model`Name,"config.m"}]];
 If [GaugeU1,
-    EvenSingletScalar = True;
+    EvenSingletScalar = True;,
+    seesaw = False;
 ];
+
 
 
 OnlyLowEnergySPheno = True;
