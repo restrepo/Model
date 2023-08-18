@@ -258,7 +258,10 @@ If [EvenSingletScalar,
   ];
 
 
-LagNoHC = -(mH2 conj[H].H + Lambda1/2 conj[H].H.conj[H].H + MS2/2 S.S + LamSH S.S.conj[H].H  + LamS/2 S.S.S.S);
+LagNoHC = -(mH2 conj[H].H + Lambda1/2 conj[H].H.conj[H].H);
+If [SSDM,
+  LagNoHC = LagNoHC -( MS2/2 S.S + LamSH S.S.conj[H].H  + LamS/2 S.S.S.S );
+]
 LagFer =  -(Yd conj[H].d.q + Ye conj[H].e.l + Yu H.u.q);
 If [EvenSingletScalar,
     LagNoHCbi = -(MuP conj[bi].bi - L2 conj[bi].bi.conj[bi].bi - L3 conj[bi].bi.conj[H].H );

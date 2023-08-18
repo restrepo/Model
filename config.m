@@ -10,3 +10,4 @@ GaugeU1 = True; (* U(1) gauge symmetry *)
 **)
 {nDG, nWG, nMG} = {1, 1, 3}; (* number of DG, WG, MG *)
 seesaw = True; (* Type-I seesaw mechanism *)
+SSDM=True;

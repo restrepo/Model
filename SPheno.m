@@ -10,11 +10,16 @@ If [GaugeU1,
 OnlyLowEnergySPheno = True;
 
 
-MINPAR={{1,Lambda1INPUT},
-        {2,LamSHINPUT},
-        {3,LamSINPUT},
-        {4,MSinput}
+MINPAR={{1,Lambda1INPUT}
         };
+If [SSDM,
+  MINPAR = Join[MINPAR,
+              {{2,LamSHINPUT},
+               {3,LamSINPUT},
+               {4,MSinput}
+               }
+              ];
+];
 If[EvenSingletScalar,
   MINPAR = Join[MINPAR,
               {{5,Lambda2INPUT},
@@ -42,11 +47,16 @@ DEFINITION[MatchingConditions]= {
  };
 
 BoundaryLowScaleInput={
-  {Lambda1,Lambda1INPUT},
-  {LamSH,LamSHINPUT},
-  {LamS,LamSINPUT},
-  {MS2, MSInput}
+  {Lambda1,Lambda1INPUT}
 };
+If [SSDM,
+  BoundaryLowScaleInput = Join[BoundaryLowScaleInput,
+                              {  {LamSH,LamSHINPUT},
+                                 {LamS,LamSINPUT},
+                                 {MS2, MSInput}
+                               }
+                              ];
+];
 If [EvenSingletScalar,
   BoundaryLowScaleInput = Join[BoundaryLowScaleInput,
                               {  {L2, Lambda2INPUT},
