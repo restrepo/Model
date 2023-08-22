@@ -146,7 +146,7 @@ If[GaugeU1,
      D->nDG,                   A->nWG, A -> nMG 
      {nDG,nWG,nMG} from config.m
   **)
-  {Xn,Xp,Xr,Xs,Xt,Xw,Xx,Xy,Xz}={1/5,-1/5,0,0,0,0,0,0,1};  
+  {Xn,Xp,Xr,Xs,Xt,Xw,Xx,Xy,Xz}={1/5,-1/5,0,0,0,0,0,0,1}; 
 ];
 
 (* Multi-generation Dirac Fermions -> Fix PDG numbers in particles.m *)
@@ -156,6 +156,8 @@ If[Xn != 0 && Xp != 0,
   nF=nF+1;
   FermionFields[[nF]] = {p, nDG, conj[pR], 0, 1,  1, Xp, -1};
 ];
+  Xn=0;
+  Xnn=1/5;
 
 
 (* Single family Dirac Fermion *)
@@ -274,10 +276,14 @@ If [EvenSingletScalar,
 If[ Xn !=0 && Xn + Xp + Xbi == 0,
     LagFer = LagFer + Ynp n.p.bi;
     ];
+
+
 (*Vector like Dirac fermion*)
 If[ Xn !=0 && Xn + Xp == 0,
     LagFer = LagFer + Mnp n.p;
     ];
+
+LagFer = LagFer + Mnp n.p;
 
 If[ Xr !=0 && Xr + Xs - Xbi == 0,
     LagFer = LagFer + Yrs r.s.conj[bi];
@@ -328,7 +334,8 @@ If [EvenSingletScalar,
       {{sigmaH,sigmaB},{Ah,ZA}},
       {{{dL}, {conj[dR]}}, {{DL,Vd}, {DR,Ud}}},
       {{{uL}, {conj[uR]}}, {{UL,Vu}, {UR,Uu}}},
-      {{{eL}, {conj[eR]}}, {{EL,Ve}, {ER,Ue}}}
+      {{{eL}, {conj[eR]}}, {{EL,Ve}, {ER,Ue}}},
+      {{{nL}, {conj[pR]}}, {{NL,Vn}, {NR,Un}}}
     };
     If [seesaw,
       EWSBMatterSectorList = Join[EWSBMatterSectorList,
@@ -414,7 +421,8 @@ DEFINITION[EWSB][MatterSector] = EWSBMatterSectorList;
 DEFINITION[EWSB][DiracSpinors]={
  Fd ->{  DL, conj[DR]},
  Fe ->{  EL, conj[ER]},
- Fu ->{  UL, conj[UR]}
+ Fu ->{  UL, conj[UR]},
+ Fn ->{  NL, conj[NR]}
  };
 
 DEFINITION[EWSB][DiracSpinors]=Join[
