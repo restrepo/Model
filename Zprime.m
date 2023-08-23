@@ -334,8 +334,7 @@ If [EvenSingletScalar,
       {{sigmaH,sigmaB},{Ah,ZA}},
       {{{dL}, {conj[dR]}}, {{DL,Vd}, {DR,Ud}}},
       {{{uL}, {conj[uR]}}, {{UL,Vu}, {UR,Uu}}},
-      {{{eL}, {conj[eR]}}, {{EL,Ve}, {ER,Ue}}},
-      {{{nL}, {conj[pR]}}, {{NL,Vn}, {NR,Un}}}
+      {{{eL}, {conj[eR]}}, {{EL,Ve}, {ER,Ue}}}
     };
     If [seesaw,
       EWSBMatterSectorList = Join[EWSBMatterSectorList,
@@ -374,7 +373,7 @@ If[Xz != 0 && nMG > 1 && !seesaw,
 If[Xn != 0,
       If[nDG > 1,
       FnList={Fn ->{  NL, conj[NR]}};,
-      FnList={Fn ->{  nL, conj[pR]}};
+      FnList={Fn ->{  nL, pR}};
       ]
    ];
 
@@ -422,7 +421,7 @@ DEFINITION[EWSB][DiracSpinors]={
  Fd ->{  DL, conj[DR]},
  Fe ->{  EL, conj[ER]},
  Fu ->{  UL, conj[UR]},
- Fn ->{  NL, conj[NR]}
+ Fn ->{  nL, pR}
  };
 
 DEFINITION[EWSB][DiracSpinors]=Join[
