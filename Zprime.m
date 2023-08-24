@@ -59,7 +59,7 @@ anomaly[d_] := Module[{X, Y, YL, S, NR = -1},
   *****)
 
 If [GaugeU1,
-  {Xq,Xl,Xd,Xu,Xe,XH,Xbi}={Xq, Xl, Xd, Xu, Xe, XH, Xbi} /. anomaly[1/3];,
+  {Xq,Xl,Xd,Xu,Xe,XH,Xbi}={Xq, Xl, Xd, Xu, Xe, XH, Xbi} /. anomaly[dRInput];,
   (*Initialize Abelian Charges*)
   {Xq,Xl,Xd,Xu,Xe,XH,Xbi}={0, 0, 0, 0, 0, 0, 0};
 ];
