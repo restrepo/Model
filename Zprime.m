@@ -279,11 +279,9 @@ If[ Xn !=0 && Xn + Xp + Xbi == 0,
 
 
 (*Vector like Dirac fermion*)
-If[ Xn !=0 && Xn + Xp == 0,
+If[ Xnn !=0 && Xnn + Xp == 0,
     LagFer = LagFer + Mnp n.p;
     ];
-
-LagFer = LagFer + Mnp n.p;
 
 If[ Xr !=0 && Xr + Xs - Xbi == 0,
     LagFer = LagFer + Yrs r.s.conj[bi];
