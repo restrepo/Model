@@ -35,38 +35,45 @@ If [GaugeU1,
         VZlist = {VZ,   { Description -> "Z-Boson",
       			 Goldstone -> Ah }};                
      ];
-     If [GaugeU1,
-        VZplist = {VZp,    { Description -> "Z'-Boson",
-      		             Goldstone -> Ah[{2}]}
+If [GaugeU1,
+   VZplist = {VZp,    { Description -> "Z'-Boson",
+ 		             Goldstone -> Ah[{2}]}
+             };
+   gZplist={gZp,    { Description -> "Z'-Ghost" }};
+   ,
+   VZplist = {VZp,    {LaTeX -> "None" }
+             };
+   gZplist={gZp,    { LaTeX -> "None" }};                  
+];
+If [seesaw,
+    FvList =       {Fv,   { Description -> "Neutrinos",
+ 			PDG ->{12,14,16,8810012,8810014,8810016}
+                          }
+                   };,
+   FvList =       {Fv,   { Description -> "Neutrinos"}
                   };
-        gZplist={gZp,    { Description -> "Z'-Ghost" }};
-        ,
-        VZplist = {VZp,    {LaTeX -> "None" }
-                  };
-        gZplist={gZp,    { LaTeX -> "None" }};                  
-     ];
+]
+FnPDGList = {1000001};
+FnPDGIXList = {2000001};
+If [nDG >= 2,
+   FnPDGList = {1000001,1000002};
+   FnPDGIXList = {2000001,2000002};
+];
+If [nDG >= 3,
+   FnPDGList = {1000001,1000002,1000003};
+   FnPDGIXList = {2000001,2000002,2000003};
+];
 
-     If [seesaw,
-         FvList =       {Fv,   { Description -> "Neutrinos",
-      			PDG ->{12,14,16,8810012,8810014,8810016}
-                               }
-                        };,
-        FvList =       {Fv,   { Description -> "Neutrinos"}
-                       };
-     ]
-
-     FnPDGList = {1000001};
-     FnPDGIXList = {2000001};
-     FnList = {Fn,   { Description -> "Darkinos",
-	      PDG -> FnPDGList,
-	      PDG.IX -> FnPDGIXList,
-	      Mass -> LesHouches,
-              FeynArtsNr -> 11,
-              LaTeX -> "{\\chi}^0_n",
-              ElectricCharge -> 0,
-              LHPC -> {3, "orange"},
-              OutputName -> "N"}
-      };
+FnList = {Fn,   { Description -> "Darkinos",
+      PDG -> FnPDGList,
+      PDG.IX -> FnPDGIXList,
+      Mass -> LesHouches,
+         FeynArtsNr -> 11,
+         LaTeX -> "{\\chi}^0_n",
+         ElectricCharge -> 0,
+         LHPC -> {3, "orange"},
+         OutputName -> "N"}
+ };
 
 
 
