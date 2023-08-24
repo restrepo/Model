@@ -351,7 +351,7 @@ If [EvenSingletScalar,
 ];
 
 (*** BEGIN: Extends EWSBMatterSectorList with chiral XXX-charged fermions ***)
-If[Xn != 0 && nDG > 1,
+If[Xnn != 0 && nDG > 1,
   EWSBMatterSectorList = Join[EWSBMatterSectorList,
     {
       {{{nL}, {conj[pR]}}, {{NL,Vn}, {NR,Un}}}
@@ -368,7 +368,7 @@ If[Xz != 0 && nMG > 1 && !seesaw,
 (*** END: Extends EWSBMatterSectorList with chiral XXX-charged fermions ***)
 
 (*** BEGIN: 4-spinor definitions for XXX-charged chiral fields ***)
-If[Xn != 0,
+If[Xnn != 0,
       If[nDG > 1,
       FnList={Fn ->{  NL, conj[NR]}};,
       FnList={Fn ->{  nL, pR}};
@@ -418,8 +418,7 @@ DEFINITION[EWSB][MatterSector] = EWSBMatterSectorList;
 DEFINITION[EWSB][DiracSpinors]={
  Fd ->{  DL, conj[DR]},
  Fe ->{  EL, conj[ER]},
- Fu ->{  UL, conj[UR]},
- Fn ->{  nL, pR}
+ Fu ->{  UL, conj[UR]}
  };
 
 DEFINITION[EWSB][DiracSpinors]=Join[
@@ -427,7 +426,7 @@ DEFINITION[EWSB][DiracSpinors]=Join[
          FvList   
                                     ];
 
-If[Xn != 0,
+If[Xnn != 0,
    DEFINITION[EWSB][DiracSpinors]=Join[
          DEFINITION[EWSB][DiracSpinors],
          FnList   
