@@ -156,9 +156,6 @@ If[Xn != 0 && Xp != 0,
   nF=nF+1;
   FermionFields[[nF]] = {p, nDG, conj[pR], 0, 1,  1, Xp, -1};
 ];
-  Xn=0;
-  Xnn=1/5;
-
 
 (* Single family Dirac Fermion *)
 If[Xr != 0 && Xs != 0,
@@ -279,7 +276,7 @@ If[ Xn !=0 && Xn + Xp + Xbi == 0,
 
 
 (*Vector like Dirac fermion*)
-If[ Xnn !=0 && Xnn + Xp == 0,
+If[ Xn !=0 && Xn + Xp == 0,
     LagFer = LagFer + Mnp n.p;
     ];
 
@@ -351,7 +348,7 @@ If [EvenSingletScalar,
 ];
 
 (*** BEGIN: Extends EWSBMatterSectorList with chiral XXX-charged fermions ***)
-If[Xnn != 0 && nDG > 1,
+If[Xn != 0 && nDG > 1,
   EWSBMatterSectorList = Join[EWSBMatterSectorList,
     {
       {{{nL}, {conj[pR]}}, {{NL,Vn}, {NR,Un}}}
@@ -368,7 +365,7 @@ If[Xz != 0 && nMG > 1 && !seesaw,
 (*** END: Extends EWSBMatterSectorList with chiral XXX-charged fermions ***)
 
 (*** BEGIN: 4-spinor definitions for XXX-charged chiral fields ***)
-If[Xnn != 0,
+If[Xn != 0,
       If[nDG > 1,
       FnList={Fn ->{  NL, conj[NR]}};,
       FnList={Fn ->{  nL, pR}};
@@ -426,7 +423,7 @@ DEFINITION[EWSB][DiracSpinors]=Join[
          FvList   
                                     ];
 
-If[Xnn != 0,
+If[Xn != 0,
    DEFINITION[EWSB][DiracSpinors]=Join[
          DEFINITION[EWSB][DiracSpinors],
          FnList   
