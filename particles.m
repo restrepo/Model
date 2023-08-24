@@ -55,7 +55,16 @@ If [GaugeU1,
                        };
      ]
 
-     
+     FnList = {Fn,   { Description -> "Darkinos",
+	      PDG -> {1000001},
+	      PDG.IX -> {2000001},
+	      Mass -> LesHouches,
+              FeynArtsNr -> 11,
+              LaTeX -> "{\\chi}^0_n",
+              ElectricCharge -> 0,
+              LHPC -> {3, "orange"},
+              OutputName -> "N"}
+      };
 
 
 
@@ -151,16 +160,7 @@ ParticleDefinitions[GaugeES] = {
       {Fu,   { Description -> "Up-Quarks"}},   
       {Fe,   { Description -> "Leptons" }},
       FvList,
-      {Fn,   { Description -> "Darkinos",
-	      PDG -> {1000001},
-	      PDG.IX -> {2000001},
-	      Mass -> LesHouches,
-              FeynArtsNr -> 11,
-              LaTeX -> "{\\chi}^0_n",
-              ElectricCharge -> 0,
-              LHPC -> {3, "orange"},
-              OutputName -> "N"}
-      },
+      FnList,
       {Fr,   { Description -> "Darkinos",
 	      PDG -> {1000011},
 	      PDG.IX -> {2000011},
