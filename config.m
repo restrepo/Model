@@ -13,7 +13,7 @@ seesaw = True; (* Type-I seesaw mechanism *)
 SSDM=False; (* Singlet scalar dark matter *)
 (************************************************************************)
 
-(** Input parameters in the regext format '\s*variableInput\s*=\s*value; (* comment *)' **)
+(** Input parameters in the REGEX format '\s*variableInput\s*=\s*value; (* comment *)' **)
 dRInput = 1/3; (* right-handed down quark charge*)
 
 (************************************************************************)
