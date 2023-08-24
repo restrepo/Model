@@ -55,9 +55,11 @@ If [GaugeU1,
                        };
      ]
 
+     FnPDGList = {1000001};
+     FnPDGIXList = {2000001};
      FnList = {Fn,   { Description -> "Darkinos",
-	      PDG -> {1000001},
-	      PDG.IX -> {2000001},
+	      PDG -> FnPDGList,
+	      PDG.IX -> FnPDGIXList,
 	      Mass -> LesHouches,
               FeynArtsNr -> 11,
               LaTeX -> "{\\chi}^0_n",
